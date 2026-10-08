@@ -45,8 +45,8 @@ export const footerNav = [
     heading: 'Services',
     links: [
       { label: 'Digital Development & Automation', href: '/digital-solutions' },
-      { label: 'Commercial Real Estate & Tenant Advisory', href: '/tenant-advisory' },
-      { label: 'Asset Management & Repositioning', href: '/asset-management' },
+      { label: 'Commercial Lease & Occupancy Cost Analysis', href: '/tenant-advisory' },
+      { label: 'Commercial Property Performance & Repositioning', href: '/asset-management' },
       { label: 'Brand & Business Strategy', href: '/brand-strategy' },
       { label: 'Real Estate Underwriting', href: '/investment-analysis' },
       { label: 'Business & Capital Advisory', href: '/business-advisory' },

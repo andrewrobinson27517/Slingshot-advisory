@@ -2,7 +2,7 @@
 
 import { useMemo, useRef, useState } from 'react';
 import Link from 'next/link';
-import { CheckCircle2, Send, Mail, FileText, ArrowLeft } from 'lucide-react';
+import { CheckCircle2, Send, Mail, FileText, ArrowLeft, Info } from 'lucide-react';
 import { intakeConfigs, getIntakeConfig } from '@/data/intake';
 import { site } from '@/data/site';
 import type { ServiceKey } from '@/lib/validation';
@@ -161,6 +161,13 @@ export function IntakeForm({ initialService }: { initialService?: ServiceKey }) 
           <ArrowLeft className="h-4 w-4" /> Change
         </button>
       </div>
+
+      {cfg?.notice ? (
+        <div className="mb-5 flex gap-2.5 rounded-xl border border-border bg-surface-muted p-4 text-sm text-ink-muted">
+          <Info className="mt-0.5 h-4 w-4 shrink-0 text-accent-strong" />
+          <span>{cfg.notice}</span>
+        </div>
+      ) : null}
 
       {/* Honeypot — visually hidden, off-screen; bots fill it, humans don't. */}
       <div aria-hidden className="absolute left-[-9999px] top-0 h-0 w-0 overflow-hidden">

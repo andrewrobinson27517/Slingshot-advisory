@@ -7,7 +7,6 @@ import {
   Calculator,
   MonitorSmartphone,
   ClipboardList,
-  KeyRound,
   Eye,
   Search,
   Hammer,
@@ -30,9 +29,9 @@ import { caseStudies } from '@/data/caseStudies';
 import { serviceSchema, faqSchema } from '@/lib/schema';
 
 export const metadata: Metadata = {
-  title: 'Asset Management & Repositioning — Rochester MN',
+  title: 'Commercial Property Performance & Repositioning — Rochester MN',
   description:
-    'Active, operator-led asset management for commercial property owners: reposition underperforming real estate, improve occupancy and revenue, protect NOI, add technology, and strengthen tenant relationships. Owner-operated in Rochester, MN.',
+    'Operator-led analysis and strategy for commercial property owners: assess financial and operational performance, find the friction, and evaluate practical ways to improve occupancy, operating expenses, tenant experience, and long-term value. Analysis and strategy — not brokerage or property management. Rochester, MN.',
   alternates: { canonical: '/asset-management' },
 };
 
@@ -50,34 +49,51 @@ const whyUnderperforms = [
 
 const areas = [
   {
-    icon: RefreshCcw,
-    title: 'Property Repositioning',
-    bullets: ['Analyze underutilized spaces', 'Review layouts and tenant experience', 'Evaluate alternate uses', 'Develop improvement concepts'],
+    icon: Gauge,
+    title: 'Property Performance Assessment',
+    bullets: [
+      'Financial statement analysis',
+      'NOI evaluation',
+      'Occupancy trend review',
+      'Operating expense comparisons',
+      'Revenue opportunity assessment',
+      'Property positioning analysis',
+    ],
   },
   {
-    icon: TrendingUp,
-    title: 'Revenue & Occupancy',
-    bullets: ['Analyze current rents and occupancy', 'Evaluate competitive positioning', 'Develop marketing strategies', 'Improve lead-generation systems', 'Identify lease-up opportunities'],
+    icon: RefreshCcw,
+    title: 'Repositioning Strategy',
+    bullets: [
+      'Space utilization concepts',
+      'Customer & tenant experience assessment',
+      'Market positioning',
+      'Brand development',
+      'Amenity strategy',
+      'Digital presence & inquiry-workflow analysis',
+      'Capital-improvement scenarios',
+    ],
   },
   {
     icon: Calculator,
-    title: 'Financial Performance',
-    bullets: ['Analyze NOI', 'Review operating-expense categories', 'Evaluate vendor contracts', 'Develop annual budgets', 'Model capital improvements', 'Assess cash flow & refinancing scenarios'],
+    title: 'Financial Analysis',
+    bullets: [
+      'Cash-flow forecasting',
+      'DSCR analysis',
+      'Refinancing scenario modeling',
+      'Expense-reduction opportunities',
+      'Revenue sensitivity analysis',
+    ],
   },
   {
     icon: MonitorSmartphone,
-    title: 'Technology',
-    bullets: ['Property websites', 'Automated leasing inquiries', 'Tenant communication systems', 'Maintenance workflows', 'Dashboards and reporting'],
-  },
-  {
-    icon: ClipboardList,
-    title: 'Asset Management',
-    bullets: ['Ongoing operational oversight', 'Performance monitoring', 'Business planning', 'Implementation coordination', 'Owner reporting'],
-  },
-  {
-    icon: KeyRound,
-    title: 'Property Management',
-    bullets: ['Full property management or leasing services may be available through appropriately licensed arrangements, where applicable.'],
+    title: 'Technology & Operations Consulting',
+    bullets: [
+      'Property websites',
+      'Inquiry automation',
+      'Customer communication workflows',
+      'Reporting dashboards',
+      'Administrative process improvements',
+    ],
   },
 ];
 
@@ -97,11 +113,10 @@ const noi = {
 
 const pricing = [
   { name: 'One-time property assessment', text: 'A focused review of a property with clear findings and recommendations.' },
-  { name: 'Project-based repositioning fee', text: 'A scoped project to put specific improvements in place.' },
-  { name: 'Fixed monthly retainer', text: 'Ongoing oversight and reporting at a predictable rate.' },
+  { name: 'Project-based repositioning strategy', text: 'A scoped strategy project — concept, financial analysis, and a practical plan.' },
+  { name: 'Fixed monthly retainer', text: 'Ongoing analysis, planning, and reporting at a predictable rate.' },
   { name: 'Initial minimum retainer', text: 'A modest retainer during a stabilization period while the improvement plan is developed.' },
-  { name: 'Performance- or revenue-based', text: 'Where legally permissible, a fee tied to results or a defined share of property revenue.' },
-  { name: 'Custom ongoing engagement', text: 'A tailored asset-management arrangement for a specific portfolio or situation.' },
+  { name: 'Custom ongoing engagement', text: 'A tailored advisory arrangement for a specific property or portfolio.' },
 ];
 
 const faqs = [
@@ -119,11 +134,11 @@ const faqs = [
   },
   {
     q: 'Do you manage my property or lease it for me?',
-    a: 'Our core work is analysis, strategy, technology, and implementation coordination — not activities that require a real estate brokerage or property-management license. Full property management or leasing can be arranged through appropriately licensed arrangements where applicable. We’ll always be clear about which is which.',
+    a: 'No. This service is analysis, strategy, financial planning, marketing concepts, and technology — not property management, leasing, or brokerage, which require appropriate licensing. We’re currently validating demand for those services; if you need them, tell us and we’ll discuss whether an appropriately licensed provider is the right fit. We don’t accept management or brokerage engagements we aren’t authorized to perform.',
   },
   {
     q: 'How is this priced?',
-    a: 'Flexibly, to fit the property and the owner: a one-time assessment, a project-based repositioning fee, a fixed monthly retainer, a modest initial retainer during stabilization, a performance- or revenue-based arrangement where legally permissible, or a custom ongoing engagement. Any percentage-based fee is defined carefully — the revenue base, responsibilities, exclusions, and licensing — and agreed before we start. These are conceptual structures, not published rates.',
+    a: 'Flexibly, to fit the property and the owner: a one-time assessment, a project-based repositioning strategy, a fixed monthly retainer, a modest initial retainer during stabilization, or a custom ongoing advisory engagement. Any performance- or revenue-linked arrangement would be structured with legal and licensing review before it’s offered. These are conceptual structures, not published rates, and we agree on terms before we start.',
   },
 ];
 
@@ -137,8 +152,8 @@ export default function AssetManagementPage() {
       <SchemaScript
         schema={[
           serviceSchema(
-            'Asset Management & Repositioning',
-            'Active, operator-led asset management: reposition underperforming commercial real estate, improve occupancy and revenue, protect NOI, add technology, and strengthen operations and tenant relationships.',
+            'Commercial Property Performance & Repositioning',
+            'Operator-led analysis and strategy for commercial property owners: assess financial and operational performance, identify friction, and evaluate practical ways to improve occupancy, expenses, tenant experience, and value. Analysis and strategy, not brokerage or property management.',
             '/asset-management',
           ),
           faqSchema(faqs),
@@ -146,9 +161,9 @@ export default function AssetManagementPage() {
       />
 
       <PageHeader
-        eyebrow="Asset Management & Repositioning"
-        title="Your Property Needs More Than a Listing."
-        intro="We help commercial property owners look beyond vacancy and identify what’s actually limiting a property’s performance — from positioning and tenant experience to operating costs, technology, and revenue opportunities. We’ve repositioned and operated our own buildings, so this isn’t theory."
+        eyebrow="Commercial Property Performance & Repositioning"
+        title="Your Property May Have More Potential Than Its Current Performance Suggests."
+        intro="We help commercial property owners better understand their property’s financial and operational performance, identify sources of friction, and evaluate practical opportunities to improve occupancy, operating expenses, tenant experience, and long-term value. Our initial work focuses on analysis, business strategy, financial planning, marketing concepts, and technology — not brokerage or property management."
         primary={{ label: 'Discuss My Property', href: '/contact?service=property' }}
       />
 
@@ -214,6 +229,11 @@ export default function AssetManagementPage() {
                 simply to fill a vacancy — it’s to create a property that better serves the
                 businesses occupying it.
               </p>
+              <p className="text-[0.95rem] leading-relaxed text-on-dark-muted">
+                Through this service we provide strategic assessment and recommendations — the
+                perspective of people who have actually owned and operated commercial property — not
+                brokerage representation.
+              </p>
             </div>
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-7">
@@ -251,10 +271,15 @@ export default function AssetManagementPage() {
       {/* Service areas */}
       <Section spacing="lg">
         <Container>
-          <SectionHeading eyebrow="How we help" title="Where we can make a difference" className="mb-10" />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <SectionHeading
+            eyebrow="How we help"
+            title="Services we focus on"
+            intro="Our initial work is analysis, strategy, financial planning, marketing concepts, and technology."
+            className="mb-10"
+          />
+          <div className="grid gap-5 sm:grid-cols-2">
             {areas.map((a, i) => (
-              <Reveal key={a.title} delay={(i % 3) * 0.05}>
+              <Reveal key={a.title} delay={(i % 2) * 0.05}>
                 <Card className="h-full">
                   <span className="grid h-11 w-11 place-items-center rounded-xl bg-accent-soft text-accent-strong">
                     <a.icon className="h-5 w-5" />
@@ -270,6 +295,19 @@ export default function AssetManagementPage() {
                 </Card>
               </Reveal>
             ))}
+          </div>
+
+          {/* What this service is NOT — licensing clarity */}
+          <div className="mt-6 rounded-2xl border border-border bg-surface-muted p-6">
+            <h3 className="font-semibold text-ink">What this service is — and isn’t</h3>
+            <p className="measure mt-2 text-[0.95rem] leading-relaxed text-ink-muted">
+              This is strategic assessment and recommendations. It is <strong>not</strong> brokerage
+              representation, and it does not include placing tenants, negotiating leases, collecting
+              rent for others, managing tenants on an owner’s behalf, or supervising third-party
+              properties. If your situation needs full-service property management or brokerage, we’ll
+              talk through whether an appropriately licensed provider is needed — we don’t accept those
+              engagements unless and until we’re authorized to.
+            </p>
           </div>
         </Container>
       </Section>
@@ -443,8 +481,9 @@ export default function AssetManagementPage() {
               An office owner with significant vacancy might prefer a modest initial retainer while we
               develop the improvement plan. As occupancy and revenue improve, the arrangement could
               transition to another agreed structure. This is an illustration of how fees can flex —
-              not a published promise or an automatic formula. Any percentage-based fee is defined
-              carefully, including the revenue base, responsibilities, exclusions, and applicable
+              not a published promise or an automatic formula. Any performance- or revenue-linked
+              arrangement would be evaluated and structured with legal and licensing review before
+              it’s offered — including the revenue base, responsibilities, exclusions, and applicable
               licensing requirements.
             </p>
           </div>
@@ -458,12 +497,13 @@ export default function AssetManagementPage() {
           <FaqAccordion items={faqs} />
           <div className="mt-8">
             <Disclosure>
-              Asset management &amp; repositioning is advisory, analysis, technology, and
-              implementation-coordination work. It is not real estate brokerage, property management,
-              legal, tax, or appraisal services, and it is not an investment recommendation.
-              Activities requiring a real estate or property-management license are only provided
-              through appropriately licensed arrangements where applicable, and any
-              performance- or revenue-based fee is structured to comply with applicable law.
+              Commercial Property Performance &amp; Repositioning is advisory, analysis, strategy, and
+              technology work. It is not real estate brokerage, tenant representation, property
+              management, leasing, legal, tax, or appraisal services, and it is not an investment
+              recommendation. We do not currently provide — or accept engagements for — activities
+              that require a real estate or property-management license; where those are needed, they
+              would only be provided through appropriately licensed arrangements. Any performance- or
+              revenue-linked fee would be structured to comply with applicable Minnesota law.
             </Disclosure>
           </div>
         </Container>

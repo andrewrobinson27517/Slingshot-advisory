@@ -17,19 +17,19 @@ export const divisions = [
   },
   {
     key: 'realestate',
-    title: 'Commercial Real Estate & Tenant Advisory',
+    title: 'Commercial Lease & Occupancy Cost Analysis',
     route: '/tenant-advisory',
     icon: Building2,
     summary:
-      'CAM expense reviews, lease-renewal analysis, occupancy-cost planning, and financial analysis.',
+      'CAM reconciliation reviews, lease-cost analysis, occupancy-cost projections, and renewal modeling — the financial picture before you decide.',
   },
   {
     key: 'asset',
-    title: 'Asset Management & Repositioning',
+    title: 'Commercial Property Performance & Repositioning',
     route: '/asset-management',
     icon: TrendingUp,
     summary:
-      'Evaluate underperforming real estate, improve occupancy, strengthen operations, and rethink how assets function.',
+      'Understand what’s limiting a property’s performance and evaluate practical ways to improve occupancy, expenses, experience, and long-term value — analysis and strategy, not brokerage or management.',
   },
 ] as const;
 
@@ -100,15 +100,15 @@ export const services: Service[] = [
     slug: 'tenant-advisory',
     route: '/tenant-advisory',
     key: 'cam-review',
-    nav: 'Commercial Tenant Advisory',
-    title: 'Commercial Tenant Advisory',
+    nav: 'Commercial Lease & Occupancy Cost Analysis',
+    title: 'Commercial Lease & Occupancy Cost Analysis',
     icon: Building2,
     cardSummary:
-      'Understand your occupancy costs, review CAM reconciliations, and prepare for lease-renewal decisions.',
+      'Understand your occupancy costs, review CAM reconciliations, and model lease-renewal decisions — financial analysis, not brokerage.',
     hero: {
-      eyebrow: 'Commercial Tenant Advisory',
-      headline: 'Understand Your Lease. Control Your Costs.',
-      sub: 'Commercial leases and occupancy expenses can be complicated. We help business owners analyze costs, review the supporting calculations, and prepare for important occupancy decisions.',
+      eyebrow: 'Commercial Lease & Occupancy Cost Analysis',
+      headline: 'Understand Your Occupancy Costs Before Making Your Next Decision.',
+      sub: 'Commercial leases and occupancy expenses can be complicated. We help business owners analyze costs, review the supporting calculations, and model their options — so you can have a well-prepared conversation with your landlord. This is financial analysis, not lease negotiation or brokerage representation.',
     },
     sections: [
       {
@@ -207,13 +207,13 @@ export const services: Service[] = [
       },
     ],
     disclaimer:
-      'Commercial Tenant Advisory is a financial analysis, cost-review, and negotiation-preparation service. It is not licensed tenant representation, brokerage, or legal advice, and we do not negotiate lease terms directly on your behalf. For legal interpretation of your lease, consult a licensed attorney.',
-    primaryCta: { label: 'Request a CAM Review', service: 'cam-review' },
+      'Commercial Lease & Occupancy Cost Analysis is a financial analysis and cost-review service. It is not licensed tenant representation or brokerage, it is not legal advice, and we do not negotiate lease terms on your behalf, procure or advertise space for compensation, or charge transaction-based success fees. Lease-related financial analysis does not replace legal review or licensed brokerage representation — where you need those, engage an appropriately licensed professional.',
+    primaryCta: { label: 'Review My Lease or CAM', service: 'cam-review' },
     secondaryCta: { label: 'Evaluate My Lease Renewal', service: 'lease-renewal' },
     seo: {
-      title: 'Commercial Tenant Advisory & CAM Reconciliation Review — Rochester MN',
+      title: 'Commercial Lease & Occupancy Cost Analysis — Rochester MN',
       description:
-        'CAM reconciliation review, lease renewal financial analysis, and occupancy cost planning for commercial tenants in Rochester, MN. Understand your lease and control your costs.',
+        'CAM reconciliation reviews, lease-cost analysis, occupancy-cost projections, and renewal modeling for commercial tenants in Rochester, MN. Financial analysis to inform your decisions — not lease negotiation or brokerage.',
     },
   },
 

@@ -57,10 +57,11 @@ export function SiteFooter() {
 
         <div className="mt-12 border-t border-border-dark pt-6 text-[0.9rem] text-on-dark-muted">
           <p className="measure">
-            Slingshot Advisory provides business analysis, preparation, and digital services.
-            It is not a licensed real estate brokerage, law firm, CPA firm, mortgage
-            originator, or registered investment adviser. Services described here are not
-            legal, tax, accounting, appraisal, or investment advice.
+            Slingshot Advisory provides business analysis, strategy, and digital services. It is
+            not a licensed real estate brokerage or property-management company, law firm, CPA
+            firm, mortgage originator, or registered investment adviser, and it does not provide
+            tenant representation, leasing, or property management. Services described here are not
+            legal, tax, accounting, appraisal, brokerage, or investment advice.
           </p>
           <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <p>© {year} {site.name}. All rights reserved.</p>

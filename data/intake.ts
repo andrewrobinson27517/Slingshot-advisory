@@ -26,6 +26,7 @@ export type IntakeConfig = {
   blurb: string; // one line under the selected service
   fields: IntakeField[]; // conditional, service-specific questions
   documents?: string[]; // "documents typically needed" checklist
+  notice?: string; // optional clarification banner (e.g. licensing scope)
 };
 
 const budgetOptions = ['Under $2,000', '$2,000 – $4,000', '$4,000 – $8,000', '$8,000+', 'Not sure yet'];
@@ -120,9 +121,27 @@ export const intakeConfigs: IntakeConfig[] = [
   },
   {
     key: 'property',
-    label: 'Asset Management & Repositioning',
-    blurb: 'A property strategy conversation — occupancy, performance, and opportunities.',
+    label: 'Commercial Property Performance & Repositioning',
+    blurb: 'A property performance conversation — financials, occupancy, and practical opportunities.',
+    notice:
+      'Some real estate services require licensed professionals. If your request involves brokerage or property management, we’ll discuss whether an appropriately licensed provider may be needed — we don’t accept those engagements unless we’re authorized to.',
     fields: [
+      {
+        id: 'assistanceType',
+        label: 'What type of assistance are you looking for?',
+        type: 'select',
+        required: true,
+        full: true,
+        options: [
+          'Property financial performance assessment',
+          'NOI and expense analysis',
+          'Property repositioning strategy',
+          'Technology and marketing improvements',
+          'Full-service property management',
+          'Leasing or brokerage representation',
+          'Not sure — I’d like to discuss my property',
+        ],
+      },
       { id: 'location', label: 'Property location', type: 'text', required: true, placeholder: 'City, state or address' },
       { id: 'propertyType', label: 'Property type', type: 'select', options: propertyTypes },
       { id: 'size', label: 'Approximate size', type: 'text', placeholder: 'e.g. 18,000 sf, 12 units' },

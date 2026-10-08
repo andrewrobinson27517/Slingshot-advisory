@@ -10,7 +10,11 @@ export type FaqItem = { q: string; a: string };
 export const faqs: FaqItem[] = [
   {
     q: 'What does Slingshot Advisory do?',
-    a: 'We help Rochester businesses in three main ways: digital development and automation (custom websites, AI assistants, and workflow automation), commercial tenant and business advisory (CAM reviews, lease analysis, underwriting, and capital/operations advisory), and asset management and repositioning for commercial property owners. We also help businesses rethink their brand, positioning, and operating model. Our edge is real operating experience — we’ve owned, financed, branded, and run businesses and commercial real estate ourselves.',
+    a: 'We help Rochester businesses in three main ways: digital development and automation (custom websites, AI assistants, and workflow automation), commercial lease and occupancy cost analysis plus business and financial advisory (CAM reviews, lease analysis, underwriting), and commercial property performance and repositioning for property owners (analysis and strategy). We also help businesses rethink their brand, positioning, and operating model. Our edge is real operating experience — we’ve owned, financed, branded, and run businesses and commercial real estate ourselves. Our current services are advisory, analytical, and technology work, not licensed brokerage or property management.',
+  },
+  {
+    q: 'Do you provide brokerage, leasing, or property management?',
+    a: 'Not currently. Slingshot Advisory provides analysis, strategy, financial modeling, and technology — not real estate brokerage, tenant representation, leasing, or third-party property management, which require appropriate licensing in Minnesota. We don’t negotiate leases, procure space for compensation, place tenants, or manage property on an owner’s behalf. If you need those services we’ll talk through whether an appropriately licensed provider is the right fit; we don’t accept engagements we aren’t authorized to perform.',
   },
   {
     q: 'How much does a CAM review cost?',

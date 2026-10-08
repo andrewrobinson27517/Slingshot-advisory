@@ -12,7 +12,7 @@ export type WorkGroup = 'brand-strategy' | 'digital' | 'real-estate';
 export const groupLabels: Record<WorkGroup, string> = {
   'brand-strategy': 'Brand & Business Strategy',
   digital: 'Digital Development & Customer Experience',
-  'real-estate': 'Real Estate & Asset Repositioning',
+  'real-estate': 'Real Estate & Property Repositioning',
 };
 
 export const groupIntros: Record<WorkGroup, string> = {

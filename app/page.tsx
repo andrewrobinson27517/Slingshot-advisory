@@ -32,10 +32,10 @@ const realEstateHelp = [
   'Renewal financial modeling',
   'Real estate underwriting',
   'Property positioning',
-  'Leasing & marketing strategy',
+  'Marketing & positioning concepts',
   'Operating expense reviews',
   'NOI analysis',
-  'Asset management',
+  'Property performance assessment',
 ];
 
 export default function HomePage() {
@@ -325,7 +325,7 @@ export default function HomePage() {
               </ul>
               <div className="mt-7 flex flex-wrap gap-3">
                 <Button href="/contact?service=property" variant="accent">Discuss My Property</Button>
-                <Button href="/tenant-advisory" variant="outline">Tenant advisory</Button>
+                <Button href="/tenant-advisory" variant="outline">Lease &amp; cost analysis</Button>
               </div>
             </Reveal>
           </div>

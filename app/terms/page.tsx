@@ -74,12 +74,14 @@ export default function TermsPage() {
 
             <h2>Not licensed professional advice</h2>
             <p>
-              Slingshot Advisory is not a licensed real estate brokerage, law firm, CPA or
-              accounting firm, mortgage originator or loan broker, or registered investment
-              adviser. Nothing on this site or in our deliverables is legal, tax, accounting,
-              appraisal, brokerage, or investment advice. We do not negotiate leases, place or
-              negotiate financing, or provide services that require a license we do not hold.
-              Where a situation calls for a licensed professional, we’ll tell you.
+              Slingshot Advisory is not a licensed real estate brokerage, property-management
+              company, law firm, CPA or accounting firm, mortgage originator or loan broker, or
+              registered investment adviser. Nothing on this site or in our deliverables is legal,
+              tax, accounting, appraisal, brokerage, or investment advice. We do not negotiate
+              leases, represent tenants, procure tenants or space for compensation, manage property
+              or collect rent on an owner’s behalf, place or negotiate financing, or provide any
+              service that requires a license we do not hold. Where a situation calls for a licensed
+              professional, we’ll tell you.
             </p>
 
             <h2>No guarantees</h2>
