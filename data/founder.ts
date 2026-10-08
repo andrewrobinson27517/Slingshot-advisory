@@ -40,5 +40,67 @@ export const founder = {
     attribution: 'Andrew Robinson',
   },
 
+  /**
+   * Breadth of professional experience behind the firm. IMPORTANT: this reflects
+   * the founder's professional background — not assets the company manages, and
+   * not institutional advisory engagements the company has performed.
+   */
+  experience: {
+    heading: 'Experience Across Industries. Focused on Practical Solutions.',
+    body: [
+      'Our background spans work with boutique real estate operators and clients managing hundreds of millions of dollars in assets, across sectors including life sciences, industrial, office, multifamily, and hospitality.',
+      'That experience, combined with building and operating our own businesses, shapes how we approach each challenge. A small business doesn’t need the overhead of an institutional organization to benefit from thoughtful strategy, financial discipline, modern technology, and strong operations — our goal is to bring those principles together in a practical, accessible way.',
+    ],
+    assetClasses: [
+      'Life sciences',
+      'Industrial',
+      'Commercial office',
+      'Multifamily residential',
+      'Short-term & furnished rentals',
+      'Coworking & flexible office',
+      'Real estate ownership & operations',
+    ],
+    note: 'This experience reflects the founder’s professional background. Slingshot Advisory itself does not manage hundreds of millions of dollars in assets and does not claim institutional clients or advisory engagements it has not performed.',
+  },
+
+  /** The operating principle at the center of how we work. */
+  principle: {
+    statement: 'You don’t create the market. You respond to it.',
+    body: [
+      'Successful businesses don’t usually need to invent demand — they need to pay attention. Markets constantly communicate what customers need, what frustrates them, and what prevents a transaction from happening.',
+      'We listen to the market, identify the friction, and build a practical solution that responds to what’s already there. Sometimes that’s repositioning a property. Sometimes it’s changing how a business talks to customers. And sometimes it’s as simple as putting an ATM where people need cash.',
+    ],
+  },
+
+  /** Listen · Identify · Solve · Measure — applies across every service line. */
+  framework: [
+    { step: 'Listen to the Market', text: 'Understand customer behavior, business needs, operational challenges, and existing demand.' },
+    { step: 'Identify the Friction', text: 'Find what’s preventing a business or property from performing — pricing, access, technology, positioning, experience, or structure.' },
+    { step: 'Build a Practical Solution', text: 'Develop a financially sensible response that fits the real problem. The right answer isn’t always the most expensive or sophisticated one.' },
+    { step: 'Measure and Adapt', text: 'Track adoption, cost, revenue, occupancy, or whatever matters — and keep adjusting to real feedback.' },
+  ],
+
+  /** Short examples of one consistent philosophy across the portfolio. */
+  marketExamples: [
+    { name: 'The Hub Network', text: 'Recognized demand for flexible professional office space and built a unified brand and operating platform supported by centralized technology.' },
+    { name: "Rose's Village", text: 'Responded to demand for furnished accommodations with a branded hospitality offering and a customer-focused digital experience.' },
+    { name: 'Commercial repositioning', text: 'Rather than assume the existing layout or leasing strategy is right, evaluate what businesses actually need and adapt the offering.' },
+    { name: 'Website development', text: 'Rather than force clients into a template, find where their customers hit friction and build technology that addresses it.' },
+    { name: 'The Rochester Farmers Market', text: 'Spotted a simple payment-access problem and introduced a practical solution — an ATM.' },
+  ],
+
+  /** The Farmers Market ATM story — grounded, local, honest about measurement. */
+  farmersMarket: {
+    eyebrow: 'A Rochester story',
+    title: 'Sometimes the Best Business Solution Is the Simplest One.',
+    image: { src: '/photos/farmers-market.jpg', alt: 'The Rochester Farmers Market in Rochester, Minnesota' },
+    paragraphs: [
+      'While visiting the Rochester Farmers Market, I noticed a recurring problem: customers were running out of cash while shopping, and some vendors were limited by electronic-payment setups. People who wanted to buy sometimes had to leave the market to find cash — friction between willing buyers and local producers.',
+      'It wasn’t a lack of demand. People wanted to buy; the payment process was getting in the way. So instead of trying to change how the farmers operated or how customers behaved, I looked for a practical fix. Working with the Rochester Farmers Market, we introduced an ATM that made cash more accessible — so customers could complete purchases without leaving the market.',
+      'Over the following year, ATM usage and cash access grew. The demand was already there; the infrastructure simply wasn’t meeting it. We didn’t need to create a new market — we needed to respond to what the market was telling us.',
+    ],
+    note: 'ATM usage is owner-reported and qualitative; we don’t claim a specific increase in overall market sales or liquidity.',
+  },
+
   email: 'andrew@slingshot-realestate.com',
 } as const;

@@ -1,4 +1,4 @@
-import { Building2, MonitorSmartphone, LineChart, Briefcase, TrendingUp } from 'lucide-react';
+import { Building2, MonitorSmartphone, LineChart, Briefcase, TrendingUp, Palette } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { ServiceKey } from '@/lib/validation';
 
@@ -36,6 +36,13 @@ export const divisions = [
 /** Full service menu for the nav dropdown: the three divisions + supporting services. */
 export const navServices = [
   ...divisions,
+  {
+    key: 'brand',
+    title: 'Brand & Business Strategy',
+    route: '/brand-strategy',
+    icon: Palette,
+    summary: 'Rethink positioning, customer experience, and how the business operates.',
+  },
   {
     key: 'underwriting',
     title: 'Real Estate Underwriting',
@@ -215,15 +222,15 @@ export const services: Service[] = [
     slug: 'digital-solutions',
     route: '/digital-solutions',
     key: 'website',
-    nav: 'Websites & AI Solutions',
-    title: 'Website Development & AI Solutions',
+    nav: 'Digital Development & Automation',
+    title: 'Digital Development & Automation',
     icon: MonitorSmartphone,
     cardSummary:
-      'Affordable, conversion-focused websites — Starter at $500 and Business Website+ at $750 — plus AI and automation by quote.',
+      'One custom business website for $750 (optional $35/mo care) — plus AI assistants and automation quoted separately.',
     hero: {
-      eyebrow: 'Website Development & AI Solutions',
-      headline: 'Need a Better Website? Let’s Build One.',
-      sub: 'You’ve got a business to run — you shouldn’t have to become a developer. We build modern, customized websites with practical automation, straightforward pricing, and affordable ongoing support.',
+      eyebrow: 'Digital Development & Automation',
+      headline: 'Your Business Is Different. Your Website Should Be Too.',
+      sub: 'You’ve got a business to run — you shouldn’t have to become a developer. We build one custom, conversion-focused website for a flat $750, with practical automation and affordable, optional ongoing care.',
     },
     sections: [
       {
@@ -261,60 +268,11 @@ export const services: Service[] = [
         ],
       },
     ],
-    packages: [
-      {
-        name: 'Business Website',
-        price: '$1,995',
-        cadence: 'starting at',
-        summary: 'A modern, responsive site built to convert.',
-        features: [
-          'Custom responsive design',
-          'Core pages (home, services, about, contact)',
-          'Lead-generation forms',
-          'SEO fundamentals & analytics',
-          'Launch support',
-        ],
-      },
-      {
-        name: 'Website + AI Assistant',
-        price: '$3,495',
-        cadence: 'starting at',
-        summary: 'A site with a built-in assistant and smart intake.',
-        featured: true,
-        features: [
-          'Everything in Business Website',
-          'Website assistant trained on your content',
-          'Smart inquiry intake & categorization',
-          'Automated acknowledgment emails',
-          'Human-handoff path',
-        ],
-      },
-      {
-        name: 'Workflow Automation',
-        price: '$995',
-        cadence: 'starting at',
-        summary: 'Automate a specific, repetitive business process.',
-        features: [
-          'One scoped automation (intake, notifications, reporting, etc.)',
-          'Integration with your existing tools',
-          'Documentation and handoff',
-        ],
-      },
-      {
-        name: 'Digital Care Plan',
-        price: '$199',
-        cadence: '/month',
-        summary: 'Ongoing hosting, updates, and small changes.',
-        features: [
-          'Hosting & monitoring',
-          'Security and dependency updates',
-          'A set allotment of content/change requests',
-          'Priority support',
-        ],
-      },
-    ],
+    // Pricing for this service is presented on the custom /digital-solutions page
+    // (single $750 offer + optional $35/mo care). No package cards here.
+    packages: [],
     packagesNote:
-      'Scope determines final pricing. We do not offer unlimited revisions or unlimited AI usage — deliverables and limits are defined clearly before we begin.',
+      'One custom website for $750 ($500 up front, $250 at the agreed launch milestone). Optional ongoing care is $35/month. AI assistants, booking infrastructure, databases, and larger integrations are scoped and quoted separately — deliverables and limits are defined before we begin.',
     faqs: [
       {
         q: 'Can you work from my existing website?',
@@ -325,8 +283,8 @@ export const services: Service[] = [
         a: 'Our assistants are built to answer from your approved content and knowledge base, and to hand off to a human when they can’t help. We constrain what they say — we don’t let them invent pricing, guarantees, or claims.',
       },
       {
-        q: 'What does the Digital Care Plan include?',
-        a: 'Hosting, monitoring, security and dependency updates, and a defined monthly allotment of content and change requests. It keeps your site healthy without a per-change invoice. Larger projects are quoted separately.',
+        q: 'What does ongoing Website Care include, and is it required?',
+        a: 'It’s optional. For $35/month, Website Care covers a defined, reasonable amount of routine content updates, security and dependency updates, uptime monitoring, and email support — not unlimited changes. Hosting, domains, and any API/AI/third-party usage are billed as actual cost, and larger changes or new functionality are quoted separately. You can opt in after launch, with clear cancellation terms.',
       },
     ],
     disclaimer:

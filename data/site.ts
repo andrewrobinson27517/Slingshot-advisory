@@ -21,9 +21,13 @@ export const site = {
     serviceArea: 'Rochester & Southeast Minnesota · Remote nationwide where permitted',
   },
 
-  /** Related Slingshot companies (the operating experience behind the firm). */
+  /** Related Slingshot companies & projects (the operating experience behind the firm). */
   family: {
     realEstate: 'https://slingshot-realestate.com',
+    hubNetwork: 'https://thehubofficenetwork.com',
+    rosesVillage: 'https://rosesvillagemn.com',
+    ironwoodSquare: 'https://ironwoodsquare.netlify.app',
+    bazookaArcade: 'https://bazookaarcade.com',
   },
 } as const;
 
@@ -43,6 +47,7 @@ export const footerNav = [
       { label: 'Digital Development & Automation', href: '/digital-solutions' },
       { label: 'Commercial Real Estate & Tenant Advisory', href: '/tenant-advisory' },
       { label: 'Asset Management & Repositioning', href: '/asset-management' },
+      { label: 'Brand & Business Strategy', href: '/brand-strategy' },
       { label: 'Real Estate Underwriting', href: '/investment-analysis' },
       { label: 'Business & Capital Advisory', href: '/business-advisory' },
     ],

@@ -66,11 +66,11 @@ view to manage them (see “Not yet built” below).
 
 ## Website purchase & booking ("Build My Website")
 
-Visitors can buy a website package directly: **Starter $500** or **Business Website+ $750**
-(a $500 deposit, $250 balance at the final milestone). Flow:
+Visitors buy one **Custom Business Website — $750** directly (a $500 deposit up front, $250
+balance at the agreed launch milestone). Flow:
 
-1. **`/get-started`** — pick a package, enter business info, agree to the project terms
-   (`/terms#website-projects`). `components/checkout/CheckoutFlow.tsx`.
+1. **`/get-started`** — describe the business and goals, review the agreed scope, agree to the
+   project terms (`/terms#website-projects`). `components/checkout/CheckoutFlow.tsx`.
 2. **`POST /api/orders`** — zod-validates, saves the order (dev `./.orders/orders.jsonl` and/or
    `LEAD_WEBHOOK_URL`), emails the owner, and:
    - **With Stripe configured** (`STRIPE_SECRET_KEY`) → creates a Checkout Session and returns the

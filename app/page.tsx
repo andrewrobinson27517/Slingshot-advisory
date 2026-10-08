@@ -12,7 +12,7 @@ import { Badge } from '@/components/ui/Badge';
 import { founder } from '@/data/founder';
 import { caseStudies } from '@/data/caseStudies';
 import { divisions } from '@/data/services';
-import { webPackages } from '@/data/packages';
+import { webPackage } from '@/data/packages';
 import { work } from '@/data/work';
 
 const websiteFeatures = [
@@ -39,7 +39,7 @@ const realEstateHelp = [
 ];
 
 export default function HomePage() {
-  const projects = ['seven-medicine', 'ironwood-square', 'slingshot-real-estate']
+  const projects = ['roses-village', 'bazooka-arcade', 'seven-medicine']
     .map((s) => work.find((w) => w.slug === s))
     .filter(Boolean);
 
@@ -78,7 +78,8 @@ export default function HomePage() {
               ))}
             </div>
             <blockquote className="mt-6 border-l-2 border-accent pl-5 font-display text-xl italic leading-relaxed text-ink">
-              “{founder.quote.body}”
+              “{founder.principle.statement}” We listen to the market, find the friction, and build a
+              practical solution — whether that’s a website, a brand, or a better-run property.
             </blockquote>
             <Button href="/about" variant="outline" className="mt-6">
               Read the full story <ArrowRight className="h-4 w-4" />
@@ -115,6 +116,29 @@ export default function HomePage() {
               </Reveal>
             ))}
           </div>
+
+          {/* Brand & strategy — the capability woven through the others */}
+          <Reveal>
+            <Link
+              href="/brand-strategy"
+              className="group mt-5 flex flex-col items-start justify-between gap-4 rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)] transition-all hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)] sm:flex-row sm:items-center"
+            >
+              <div>
+                <p className="text-eyebrow text-accent-strong">And sometimes it’s bigger than one of those</p>
+                <h3 className="mt-1 text-xl font-semibold text-ink">
+                  Brand &amp; Business Strategy
+                </h3>
+                <p className="measure mt-1 text-[0.98rem] text-ink-muted">
+                  Sometimes the problem isn’t the website — it’s the brand, the concept, or how the
+                  business is run. We help owners rethink positioning, customer experience, and
+                  operations so the whole thing works better.
+                </p>
+              </div>
+              <span className="inline-flex shrink-0 items-center gap-1.5 font-semibold text-accent-strong">
+                Explore <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              </span>
+            </Link>
+          </Reveal>
         </Container>
       </Section>
 
@@ -218,7 +242,7 @@ export default function HomePage() {
                     >
                       <div className="min-w-0">
                         <p className="font-semibold text-ink">{p.name}</p>
-                        <p className="truncate text-[0.95rem] text-ink-muted">{p.summary}</p>
+                        <p className="truncate text-[0.95rem] text-ink-muted">{p.tagline}</p>
                       </div>
                       <ArrowUpRight className="h-5 w-5 shrink-0 text-ink-faint transition-colors group-hover:text-accent" />
                     </a>
@@ -237,33 +261,35 @@ export default function HomePage() {
           <SectionHeading
             align="center"
             eyebrow="Transparent pricing"
-            title="Affordable, up-front website pricing"
-            intro="No inflated agency quotes. Pick a package and get started — or ask about something more custom."
+            title="One custom website. One honest price."
+            intro="No inflated agency quotes and no confusing tiers — a custom website for a flat $750, with anything more complex scoped and quoted on its own."
             className="mb-10"
           />
-          <div className="grid gap-5 lg:grid-cols-4">
-            {webPackages.map((p) => (
-              <div key={p.id} className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
-                <p className="text-eyebrow text-accent-strong">{p.name}</p>
-                <p className="mt-2 font-display text-4xl font-semibold text-ink">{p.priceDisplay}</p>
-                <p className="mt-1 flex-1 text-sm text-ink-muted">{p.tagline}</p>
-                <Button href={`/get-started?package=${p.id}`} variant="primary" size="sm" className="mt-5 w-full">
-                  {p.cta}
-                </Button>
-              </div>
-            ))}
-            <div className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
+          <div className="mx-auto grid max-w-3xl gap-5 sm:grid-cols-2">
+            <div className="flex flex-col rounded-2xl border border-accent/40 bg-surface p-7 shadow-[var(--shadow-card)] ring-1 ring-accent/20">
+              <p className="text-eyebrow text-accent-strong">{webPackage.name}</p>
+              <p className="mt-2 font-display text-5xl font-semibold text-ink">{webPackage.priceDisplay}</p>
+              <p className="mt-1 flex-1 text-sm text-ink-muted">
+                {webPackage.tagline} $500 up front, $250 at launch.
+              </p>
+              <Button href="/get-started" variant="accent" className="mt-5 w-full">
+                {webPackage.cta}
+              </Button>
+            </div>
+            <div className="flex flex-col rounded-2xl border border-border bg-surface p-7 shadow-[var(--shadow-card)]">
               <p className="text-eyebrow text-accent-strong">Custom Digital Solutions</p>
-              <p className="mt-2 font-display text-4xl font-semibold text-ink">Quoted</p>
-              <p className="mt-1 flex-1 text-sm text-ink-muted">AI, booking systems, integrations, and automation.</p>
-              <Button href="/contact?service=ai-automation" variant="outline" size="sm" className="mt-5 w-full">
+              <p className="mt-2 font-display text-5xl font-semibold text-ink">Quoted</p>
+              <p className="mt-1 flex-1 text-sm text-ink-muted">
+                AI assistants, booking systems, databases, and larger integrations.
+              </p>
+              <Button href="/contact?service=ai-automation" variant="outline" className="mt-5 w-full">
                 Get a Quote
               </Button>
             </div>
           </div>
           <p className="mt-6 text-center text-sm text-ink-faint">
-            Optional website care from $25–$40/month (routine maintenance within limits; hosting,
-            domain, API, and token costs billed separately).
+            Optional ongoing website care is $35/month (routine updates within limits). Hosting,
+            domains, and any API/AI/third-party costs are billed as actual pass-through cost.
           </p>
         </Container>
       </Section>

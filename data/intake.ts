@@ -92,6 +92,18 @@ export const intakeConfigs: IntakeConfig[] = [
     ],
   },
   {
+    key: 'brand-strategy',
+    label: 'Brand & Business Strategy',
+    blurb: 'Rethink positioning, customer experience, and how the business operates.',
+    fields: [
+      { id: 'businessType', label: 'Business type', type: 'text', placeholder: 'e.g. clinic, retailer, multi-location operator' },
+      { id: 'existingUrl', label: 'Website or brand link', type: 'url', placeholder: 'https:// (leave blank if none)' },
+      { id: 'challenge', label: 'What feels off?', type: 'textarea', required: true, full: true, placeholder: 'Brand, positioning, customer experience, overlapping operations, pricing, or something else.' },
+      { id: 'outcome', label: 'What would a good result look like?', type: 'textarea', full: true, placeholder: 'What you want to be true after this.' },
+      { id: 'locations', label: 'Number of locations / brands', type: 'text', placeholder: 'e.g. 1 location, or 2 brands we might consolidate' },
+    ],
+  },
+  {
     key: 'underwriting',
     label: 'Real Estate Underwriting',
     blurb: 'A clear model and honest read on a real estate opportunity.',

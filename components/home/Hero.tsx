@@ -33,7 +33,7 @@ export function Hero() {
           </p>
           <div className="animate-fade-up delay-4 mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button href="/get-started" variant="accent" size="lg">
-              Build My Website — From $500
+              Build My Website — $750
             </Button>
             <Button
               href="/contact?service=property"

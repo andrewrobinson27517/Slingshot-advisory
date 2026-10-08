@@ -3,12 +3,11 @@ import { PageHeader } from '@/components/shared/PageHeader';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { CheckoutFlow } from '@/components/checkout/CheckoutFlow';
-import type { WebPackageId } from '@/data/packages';
 
 export const metadata: Metadata = {
-  title: 'Build Your Website',
+  title: 'Build Your Website — $750',
   description:
-    'Choose a Starter ($500) or Business Website+ ($750) package, tell us about your business, and get started. Built by Slingshot Advisory in Rochester, MN.',
+    'Start your custom $750 business website: tell us about your business and goals, review the scope, and pay the $500 deposit. Then we book a discovery call and build it. Slingshot Advisory, Rochester MN.',
   alternates: { canonical: '/get-started' },
 };
 
@@ -18,16 +17,14 @@ export default async function GetStartedPage({
   searchParams: Promise<Record<string, string | string[] | undefined>>;
 }) {
   const sp = await searchParams;
-  const raw = Array.isArray(sp.package) ? sp.package[0] : sp.package;
-  const initialPackage = raw === 'starter' || raw === 'business-plus' ? (raw as WebPackageId) : undefined;
   const canceled = sp.canceled === '1';
 
   return (
     <>
       <PageHeader
-        eyebrow="Build your website"
+        eyebrow="Build your website — $750"
         title="Let’s get your website started."
-        intro="Pick a package, share a few details about your business, and pay securely. After payment you’ll book a strategy call and we’ll get to work."
+        intro="Tell us about your business and what you want the site to do, review the starting scope, and pay the $500 deposit. Next you’ll book a discovery call — then we build and launch, with the $250 balance due at the agreed milestone."
       />
 
       <Section spacing="lg">
@@ -37,7 +34,7 @@ export default async function GetStartedPage({
               Checkout was canceled — nothing was charged. You can pick up where you left off below.
             </div>
           ) : null}
-          <CheckoutFlow initialPackage={initialPackage} />
+          <CheckoutFlow />
         </Container>
       </Section>
     </>

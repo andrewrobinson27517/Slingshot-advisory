@@ -6,6 +6,7 @@ export const serviceKeys = [
   'lease-renewal',
   'website',
   'ai-automation',
+  'brand-strategy',
   'underwriting',
   'business-advisory',
   'property',
@@ -38,9 +39,9 @@ export const intakeSchema = z.object({
 
 export type IntakeInput = z.infer<typeof intakeSchema>;
 
-/** Direct website-purchase order (package select + business info). */
+/** Direct website-purchase order (single custom package + business info). */
 export const orderSchema = z.object({
-  packageId: z.enum(['starter', 'business-plus']),
+  packageId: z.literal('custom'),
   businessName: z.string().trim().min(2, 'Enter your business name.').max(160),
   contactName: z.string().trim().min(2, 'Enter your name.').max(120),
   email: z.string().trim().toLowerCase().email('Enter a valid email.').max(200),

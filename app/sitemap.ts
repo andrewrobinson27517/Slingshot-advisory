@@ -16,7 +16,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const servicePages = [...services.map((s) => s.route), '/asset-management', '/get-started'].map(
+  const servicePages = [
+    ...services.map((s) => s.route),
+    '/asset-management',
+    '/brand-strategy',
+    '/get-started',
+  ].map(
     (route) => ({
       url: `${base}${route}`,
       lastModified: now,

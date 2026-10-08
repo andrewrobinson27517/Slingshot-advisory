@@ -1,11 +1,13 @@
 /**
- * Website-build packages that can be purchased directly. Prices are the single
- * source of truth for the Digital Development page, the homepage conversion
- * section, and the checkout flow. `chargeNowCents` is what Stripe collects up
- * front; `totalCents` is the full project price (for Business Website+, the
- * difference is a balance due at an agreed milestone).
+ * Website development offering — ONE simple, custom offer (single source of
+ * truth for the Digital Development page, the homepage, and the checkout flow).
+ *
+ * $750 one-time for a custom website with a clearly agreed scope. $500 is
+ * collected up front (credited to the total); the $250 balance is due at the
+ * agreed launch milestone. More complex integrations, databases, booking
+ * infrastructure, or extensive development are quoted separately.
  */
-export type WebPackageId = 'starter' | 'business-plus';
+export type WebPackageId = 'custom';
 
 export type WebPackage = {
   id: WebPackageId;
@@ -13,100 +15,92 @@ export type WebPackage = {
   priceDisplay: string;
   totalCents: number;
   chargeNowCents: number;
-  chargeLabel: string; // e.g. "Project fee" or "Deposit (credited to total)"
+  chargeLabel: string;
   balanceNote?: string;
   tagline: string;
   ideal: string;
   cta: string;
+  /** Example capabilities — not a promise that every feature is included for $750. */
   features: string[];
   exclusions: string[];
 };
 
-export const webPackages: WebPackage[] = [
-  {
-    id: 'starter',
-    name: 'Starter Website',
-    priceDisplay: '$500',
-    totalCents: 50000,
-    chargeNowCents: 50000,
-    chargeLabel: 'Project fee',
-    tagline: 'A professional digital presence, done for you.',
-    ideal: 'Entrepreneurs and small businesses that need a clean, credible website without the agency price tag.',
-    cta: 'Build My Website — $500',
-    features: [
-      'One-page or compact starter website',
-      'Mobile-responsive design',
-      'Business information & service sections',
-      'Contact form or contact action',
-      'Basic SEO and metadata',
-      'Domain connection assistance',
-      'One round of revisions',
-    ],
-    exclusions: [
-      'Multi-page sites, booking systems, databases, or AI features (quoted separately)',
-      'Content writing beyond light editing',
-      'Ongoing changes after launch (see care plans)',
-    ],
-  },
-  {
-    id: 'business-plus',
-    name: 'Business Website+',
-    priceDisplay: '$750',
-    totalCents: 75000,
-    chargeNowCents: 50000,
-    chargeLabel: 'Deposit (credited to total)',
-    balanceNote: '$250 balance due at the agreed final milestone.',
-    tagline: 'A more interactive, conversion-focused site.',
-    ideal: 'Businesses that want more than a brochure — a site built to turn visitors into inquiries and customers.',
-    cta: 'Build My Business Website+ — $750',
-    features: [
-      'Up to three focused pages or equivalent sections',
-      'Responsive custom, conversion-focused design',
-      'Lead inquiry form',
-      'One defined automated email or notification workflow',
-      'Basic analytics integration',
-      'Basic SEO configuration',
-      'One round of revisions',
-      'Deployment and handoff',
-    ],
-    exclusions: [
-      'Complex booking systems, advanced databases, specialized APIs',
-      'Extensive AI functionality (quoted separately)',
-      'Ongoing changes after launch (see care plans)',
-    ],
-  },
-];
+export const webPackage: WebPackage = {
+  id: 'custom',
+  name: 'Custom Business Website',
+  priceDisplay: '$750',
+  totalCents: 75000,
+  chargeNowCents: 50000,
+  chargeLabel: 'Deposit (credited to the $750 total)',
+  balanceNote: '$250 balance due at the agreed launch milestone.',
+  tagline: 'Your business is different. Your website should be too.',
+  ideal:
+    'Rochester businesses that want a custom website built around how their customers actually behave — not forced into a generic template.',
+  cta: 'Build My Website — $750',
+  features: [
+    'Custom responsive website design',
+    'Conversion-focused customer experience',
+    'Lead capture and contact forms',
+    'Automated inquiry emails',
+    'AI-powered website chat assistant',
+    'Appointment and scheduling requests',
+    'Service or inventory presentations',
+    'Business-specific workflows',
+    'API integrations where appropriate',
+    'Basic analytics and SEO',
+  ],
+  exclusions: [
+    'Complex booking infrastructure, databases, or large custom development (quoted separately)',
+    'Extensive AI functionality and high-volume integrations (quoted separately)',
+    'Content writing beyond light editing',
+    'Hosting, domains, and any API / AI / third-party usage (billed as actual pass-through costs)',
+    'Ongoing changes after launch (optional Website Care, below)',
+  ],
+};
+
+/** Kept as a one-item array so existing `.map()` call sites keep working. */
+export const webPackages: WebPackage[] = [webPackage];
 
 export function getPackage(id: string): WebPackage | undefined {
-  return webPackages.find((p) => p.id === id);
+  return id === webPackage.id ? webPackage : undefined;
 }
 
 export type CarePlan = { name: string; price: string; summary: string; features: string[] };
 
-export const carePlans: CarePlan[] = [
-  {
-    name: 'Essential Care',
-    price: '$25/mo',
-    summary: 'Keep a simple site healthy and current.',
-    features: [
-      'Routine content & text updates (reasonable limit)',
-      'Security and dependency updates',
-      'Uptime monitoring',
-      'Email support',
-    ],
-  },
-  {
-    name: 'Plus Care',
-    price: '$40/mo',
-    summary: 'More updates and faster support for active sites.',
-    features: [
-      'Everything in Essential Care',
-      'A larger monthly allotment of changes',
-      'Priority support',
-      'Light analytics check-ins',
-    ],
-  },
-];
+/** A single, optional, narrowly-defined ongoing care offering. */
+export const carePlan: CarePlan = {
+  name: 'Ongoing Website Care',
+  price: '$35/mo',
+  summary: 'Optional, affordable support after launch — no expensive agency retainer.',
+  features: [
+    'A defined, reasonable amount of routine content and text updates',
+    'Security and dependency updates',
+    'Uptime monitoring',
+    'Email support',
+  ],
+};
+
+export const carePlans: CarePlan[] = [carePlan];
 
 export const carePlansNote =
-  'Plans cover routine updates within reasonable limits — not unlimited changes. Hosting, domain, and any API/AI/third-party usage are billed separately where applicable. Major changes or new functionality are quoted separately. Care plans are optional and opt-in, with clear renewal and cancellation terms; we never enroll you in recurring billing without your agreement.';
+  'Ongoing Website Care is optional and opt-in, with clear renewal and cancellation terms — we never start recurring billing without your agreement. It covers a narrowly defined amount of routine support and basic updates, not unlimited changes. Hosting, domains, API usage, AI tokens, computing, and other third-party costs are additional when applicable. Major changes or new functionality are quoted separately.';
+
+/** The three cost layers, stated plainly for the pricing UI. */
+export const costLayers = [
+  {
+    title: 'One-time development',
+    text: 'A custom website with a clearly agreed scope — $750, with $500 up front and $250 at launch.',
+  },
+  {
+    title: 'Optional ongoing care',
+    text: 'Routine support and basic updates for $35/month — only if you want it.',
+  },
+  {
+    title: 'Pass-through infrastructure',
+    text: 'Hosting, domains, and any API / AI / third-party usage, billed as actual cost when applicable.',
+  },
+  {
+    title: 'Separately quoted enhancements',
+    text: 'Complex booking, databases, large integrations, or major new functionality, scoped and quoted on their own.',
+  },
+] as const;

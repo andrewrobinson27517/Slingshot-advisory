@@ -101,8 +101,8 @@ export async function POST(req: Request) {
         amountCents: pkg.chargeNowCents,
         productName: `${pkg.name} — Slingshot Advisory`,
         description:
-          pkg.id === 'business-plus'
-            ? 'Deposit credited toward the $750 total ($250 balance at final milestone).'
+          pkg.totalCents > pkg.chargeNowCents
+            ? `Deposit credited toward the ${pkg.priceDisplay} total ($${((pkg.totalCents - pkg.chargeNowCents) / 100).toFixed(0)} balance at the agreed launch milestone).`
             : 'Website project fee.',
         customerEmail: order.email,
         successUrl: `${base}/get-started/success?order=${order.id}`,

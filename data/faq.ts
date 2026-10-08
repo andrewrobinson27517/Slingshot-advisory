@@ -10,7 +10,7 @@ export type FaqItem = { q: string; a: string };
 export const faqs: FaqItem[] = [
   {
     q: 'What does Slingshot Advisory do?',
-    a: 'We help business owners with four things: commercial tenant cost analysis (CAM reviews and lease-renewal analysis), modern websites and AI automation, real estate underwriting, and business & capital advisory. Our edge is real operating experience — we’ve owned, financed, and run businesses and commercial real estate.',
+    a: 'We help Rochester businesses in three main ways: digital development and automation (custom websites, AI assistants, and workflow automation), commercial tenant and business advisory (CAM reviews, lease analysis, underwriting, and capital/operations advisory), and asset management and repositioning for commercial property owners. We also help businesses rethink their brand, positioning, and operating model. Our edge is real operating experience — we’ve owned, financed, branded, and run businesses and commercial real estate ourselves.',
   },
   {
     q: 'How much does a CAM review cost?',
@@ -18,7 +18,7 @@ export const faqs: FaqItem[] = [
   },
   {
     q: 'How much does a website cost?',
-    a: 'A Business Website starts at $1,995, Website + AI Assistant at $3,495, Workflow Automation at $995, and the ongoing Digital Care Plan at $199/month. Scope determines the final quote — we define deliverables and limits before starting.',
+    a: 'One custom business website is $750 — a flat, one-time price for a clearly agreed scope. You pay $500 up front (credited to the total) and the $250 balance at the agreed launch milestone. Optional ongoing care is $35/month. Hosting, domains, and any API/AI/third-party usage are billed as actual cost, and more complex work (booking infrastructure, databases, large integrations, extensive AI) is quoted separately.',
   },
   {
     q: 'How much does real estate underwriting cost?',

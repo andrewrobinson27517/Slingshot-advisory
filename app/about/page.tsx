@@ -7,6 +7,7 @@ import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTASection } from '@/components/shared/CTASection';
 import { Reveal } from '@/components/ui/Reveal';
+import { Badge } from '@/components/ui/Badge';
 import { founder } from '@/data/founder';
 import { site } from '@/data/site';
 
@@ -61,6 +62,88 @@ export default function AboutPage() {
                 — {founder.quote.attribution}
               </footer>
             </blockquote>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Experience across industries */}
+      <Section tone="muted" spacing="lg">
+        <Container className="grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <Reveal>
+            <SectionHeading eyebrow="Background" title={founder.experience.heading} />
+            <div className="measure mt-5 space-y-4 text-[1.05rem] leading-relaxed text-ink-muted">
+              {founder.experience.body.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <p className="measure mt-4 text-xs leading-relaxed text-ink-faint">{founder.experience.note}</p>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <div className="rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
+              <p className="text-sm font-semibold text-ink">Asset classes we’ve worked across</p>
+              <div className="mt-4 flex flex-wrap gap-2">
+                {founder.experience.assetClasses.map((a) => (
+                  <Badge key={a} tone="neutral">
+                    {a}
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+        </Container>
+      </Section>
+
+      {/* Market-driven philosophy */}
+      <Section tone="navy" spacing="lg">
+        <Container>
+          <Reveal>
+            <p className="text-eyebrow text-accent">Our philosophy</p>
+            <h2 className="mt-3 max-w-4xl font-display text-3xl font-semibold leading-tight text-on-dark sm:text-5xl">
+              {founder.principle.statement}
+            </h2>
+            <div className="measure mt-5 space-y-4 text-[1.08rem] leading-relaxed text-on-dark-muted">
+              {founder.principle.body.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+          </Reveal>
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {founder.framework.map((f, i) => (
+              <Reveal key={f.step} delay={(i % 4) * 0.05}>
+                <div className="h-full rounded-2xl border border-white/10 bg-white/[0.04] p-6">
+                  <span className="font-display text-3xl font-semibold text-accent">{i + 1}</span>
+                  <h3 className="mt-2 font-semibold text-on-dark">{f.step}</h3>
+                  <p className="mt-2 text-[0.92rem] leading-relaxed text-on-dark-muted">{f.text}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </Container>
+      </Section>
+
+      {/* Farmers Market story */}
+      <Section spacing="lg">
+        <Container className="grid items-center gap-12 lg:grid-cols-2">
+          <Reveal>
+            <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)]">
+              <Image
+                src={founder.farmersMarket.image.src}
+                alt={founder.farmersMarket.image.alt}
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                className="aspect-[4/3] w-full object-cover"
+              />
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
+            <SectionHeading eyebrow={founder.farmersMarket.eyebrow} title={founder.farmersMarket.title} />
+            <div className="measure mt-5 space-y-4 text-[1.05rem] leading-relaxed text-ink-muted">
+              {founder.farmersMarket.paragraphs.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <p className="mt-4 text-xs text-ink-faint">{founder.farmersMarket.note}</p>
           </Reveal>
         </Container>
       </Section>
