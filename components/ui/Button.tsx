@@ -5,13 +5,13 @@ type Variant = 'primary' | 'accent' | 'outline' | 'ghost' | 'on-dark';
 type Size = 'sm' | 'md' | 'lg';
 
 const base =
-  'inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50';
+  'inline-flex items-center justify-center gap-2 rounded-md font-medium transition-all duration-200 focus-visible:outline-2 focus-visible:outline-offset-2 disabled:pointer-events-none disabled:opacity-50';
 
 const variants: Record<Variant, string> = {
   // Deep navy fill — the primary action.
-  primary: 'bg-navy text-on-dark hover:bg-navy-soft shadow-[var(--shadow-card)]',
-  // Warm accent — used sparingly for the single most important CTA.
-  accent: 'bg-accent text-navy hover:bg-accent-strong hover:text-white',
+  primary: 'bg-navy text-on-dark hover:bg-navy-soft',
+  // Burnt-orange brand accent — the key conversion CTA.
+  accent: 'bg-accent text-white hover:bg-accent-strong',
   outline: 'border border-border bg-surface text-ink hover:border-ink',
   ghost: 'text-ink hover:bg-surface-muted',
   // Light button for navy sections.

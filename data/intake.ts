@@ -107,6 +107,19 @@ export const intakeConfigs: IntakeConfig[] = [
     documents: ['Rent roll or income summary', 'Trailing operating expenses (T-12 if available)', 'Asking price or purchase terms'],
   },
   {
+    key: 'property',
+    label: 'Asset Management & Repositioning',
+    blurb: 'A property strategy conversation — occupancy, performance, and opportunities.',
+    fields: [
+      { id: 'location', label: 'Property location', type: 'text', required: true, placeholder: 'City, state or address' },
+      { id: 'propertyType', label: 'Property type', type: 'select', options: propertyTypes },
+      { id: 'size', label: 'Approximate size', type: 'text', placeholder: 'e.g. 18,000 sf, 12 units' },
+      { id: 'occupancy', label: 'Current occupancy', type: 'text', placeholder: 'e.g. 85%, fully leased, vacant' },
+      { id: 'challenges', label: 'Main performance challenges', type: 'textarea', required: true, full: true, placeholder: 'What’s not working, or what you’d like to improve.' },
+      { id: 'outcomes', label: 'Desired outcomes', type: 'textarea', full: true, placeholder: 'What would a good result look like?' },
+    ],
+  },
+  {
     key: 'business-advisory',
     label: 'Business Advisory',
     blurb: 'Practical help with a financial or operational challenge.',

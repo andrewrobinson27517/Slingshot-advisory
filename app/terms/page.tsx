@@ -30,6 +30,49 @@ export default function TermsPage() {
               your decisions and improve your operations.
             </p>
 
+            <h2 id="website-projects">Website project terms</h2>
+            <p>
+              These terms apply to website packages purchased through this site (Starter Website
+              and Business Website+).
+            </p>
+            <p>
+              <strong>Scope.</strong> Each package has a defined scope (for example, a one-page or
+              compact Starter site, or up to three focused pages for Business Website+). Features
+              not listed in the package — including complex booking systems, databases, specialized
+              APIs, and extensive AI functionality — are quoted separately before any additional
+              work begins.
+            </p>
+            <p>
+              <strong>Revisions.</strong> Each package includes one round of revisions. Additional
+              revisions or changes beyond the agreed scope are quoted separately.
+            </p>
+            <p>
+              <strong>Payment, deposit &amp; balance.</strong> The Starter Website is a $500
+              project fee paid up front. Business Website+ is $750 total: a $500 deposit is
+              collected to start (credited toward the total), with the remaining $250 due at the
+              agreed final milestone. Payments are processed securely by our payment provider; we
+              do not store card details.
+            </p>
+            <p>
+              <strong>Cancellation &amp; refunds.</strong> If you cancel before the strategy call,
+              your payment is refundable less any payment-processing fees already incurred. Once
+              development has begun, fees for work completed to date are non-refundable; any unused,
+              not-yet-started portion of a milestone may be refunded at our discretion. The $250
+              Business Website+ balance is only due once the agreed milestone is reached.
+            </p>
+            <p>
+              <strong>Ownership &amp; handoff.</strong> On full payment and launch, the finished
+              website deliverables are yours. We hand off access and, where applicable, help you
+              connect your own domain so you aren’t locked in to us as a vendor.
+            </p>
+            <p>
+              <strong>Third-party costs.</strong> Hosting, domain registration, and any API, AI, or
+              other third-party service usage are billed separately and are your responsibility
+              where applicable. Optional website care plans are opt-in, with clear renewal and
+              cancellation terms, and cover routine updates within reasonable limits — not unlimited
+              changes.
+            </p>
+
             <h2>Not licensed professional advice</h2>
             <p>
               Slingshot Advisory is not a licensed real estate brokerage, law firm, CPA or

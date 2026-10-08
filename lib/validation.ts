@@ -8,6 +8,7 @@ export const serviceKeys = [
   'ai-automation',
   'underwriting',
   'business-advisory',
+  'property',
 ] as const;
 
 export type ServiceKey = (typeof serviceKeys)[number];
@@ -36,3 +37,37 @@ export const intakeSchema = z.object({
 });
 
 export type IntakeInput = z.infer<typeof intakeSchema>;
+
+/** Direct website-purchase order (package select + business info). */
+export const orderSchema = z.object({
+  packageId: z.enum(['starter', 'business-plus']),
+  businessName: z.string().trim().min(2, 'Enter your business name.').max(160),
+  contactName: z.string().trim().min(2, 'Enter your name.').max(120),
+  email: z.string().trim().toLowerCase().email('Enter a valid email.').max(200),
+  phone: z.string().trim().max(40).optional().default(''),
+  existingWebsite: z.string().trim().max(300).optional().default(''),
+  category: z.string().trim().max(160).optional().default(''),
+  functionality: z.string().trim().max(4000).optional().default(''),
+  goal: z.string().trim().max(2000).optional().default(''),
+  terms: z.literal(true, {
+    errorMap: () => ({ message: 'Please agree to the project terms to continue.' }),
+  }),
+  company_website: z.string().max(0).optional().default(''), // honeypot
+  elapsedMs: z.number().int().nonnegative().optional(),
+});
+
+export type OrderInput = z.infer<typeof orderSchema>;
+
+/** Strategy-call scheduling request (no live calendar — collected as preferred times). */
+export const scheduleSchema = z.object({
+  name: z.string().trim().min(2, 'Enter your name.').max(120),
+  email: z.string().trim().toLowerCase().email('Enter a valid email.').max(200),
+  phone: z.string().trim().max(40).optional().default(''),
+  orderId: z.string().trim().max(60).optional().default(''),
+  preferredTimes: z.string().trim().min(3, 'Share a few times that work.').max(2000),
+  notes: z.string().trim().max(3000).optional().default(''),
+  company_website: z.string().max(0).optional().default(''), // honeypot
+  elapsedMs: z.number().int().nonnegative().optional(),
+});
+
+export type ScheduleInput = z.infer<typeof scheduleSchema>;

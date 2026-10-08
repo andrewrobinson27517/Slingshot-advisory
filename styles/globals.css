@@ -13,41 +13,43 @@
  */
 @theme {
   /* Surfaces */
-  --color-bg: #ffffff;
+  /* Surfaces — warm cream family (matches Slingshot Real Estate). */
+  --color-bg: #faf8f3; /* warm white page background */
   --color-surface: #ffffff;
-  --color-surface-muted: #f5f7fa; /* light gray — section banding */
+  --color-surface-muted: #f1ede5; /* warm light gray — section banding */
 
-  /* Ink — deep navy family */
-  --color-ink: #14263d; /* primary text + deep navy */
-  --color-ink-soft: #2a3f59;
-  --color-ink-muted: #4f6076; /* secondary text (~7:1 on white) */
-  --color-ink-faint: #667892; /* tertiary / captions */
+  /* Ink — dark navy (shared with the Slingshot family). */
+  --color-ink: #16212e;
+  --color-ink-soft: #21303f;
+  --color-ink-muted: #5b6675; /* secondary text */
+  --color-ink-faint: #8a94a1; /* tertiary / captions */
 
-  /* Stable dark surfaces (hero, footer, navy bands) — never inverted */
-  --color-navy: #14263d;
-  --color-navy-soft: #1c3756;
-  --color-steel: #8da9c4; /* muted steel blue */
+  /* Stable dark surfaces (hero, footer, navy bands) — never inverted. */
+  --color-navy: #16212e;
+  --color-navy-soft: #21303f;
+  --color-steel: #8da9c4; /* muted steel blue — technology-forward accent in graphics */
 
-  /* Warm accent — used sparingly for emphasis, never long-form text */
-  --color-accent: #c29a4b;
-  --color-accent-strong: #a07c31;
-  --color-accent-soft: #f4ecd9;
+  /* Brand accent — burnt orange (the Slingshot mark). Used for emphasis & CTAs. */
+  --color-accent: #c0532a;
+  --color-accent-strong: #a5421e;
+  --color-accent-soft: #f6e7db;
 
   /* On-dark helpers */
-  --color-on-dark: #eaf1f8;
-  --color-on-dark-muted: #abc0d8;
+  --color-on-dark: #f4f1ea;
+  --color-on-dark-muted: #a7b1bd;
 
   /* Lines & status */
-  --color-border: #e2e8f0;
-  --color-border-dark: #284664;
+  --color-border: #e6e1d7;
+  --color-border-dark: #2c3a49;
   --color-success: #2f7a52;
   --color-warning: #b7791f;
-  --color-error: #c0362c;
+  --color-error: #b3261e;
 
-  /* Typography */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, sans-serif;
-  --font-display: var(--font-manrope), var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, Menlo, monospace;
+  /* Typography — shared family type system (Geist sans + Fraunces display). */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --font-display:
+    var(--font-fraunces), 'Iowan Old Style', Georgia, 'Times New Roman', serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 
   /* Radii */
   --radius-sm: 0.375rem;
@@ -87,8 +89,8 @@
   h1, h2, h3, h4, h5, h6 {
     color: inherit;
     font-family: var(--font-display);
-    font-weight: 700;
-    letter-spacing: -0.02em;
+    font-weight: 600;
+    letter-spacing: -0.015em;
     line-height: 1.1;
     text-wrap: balance;
   }

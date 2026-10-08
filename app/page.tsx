@@ -6,9 +6,11 @@ import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTASection } from '@/components/shared/CTASection';
+import { Check, Building } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
 import { work } from '@/data/work';
+import { webPackages } from '@/data/packages';
 
 const principles = [
   {
@@ -65,6 +67,78 @@ export default function HomePage() {
             className="mb-10"
           />
           <ServiceCards />
+        </Container>
+      </Section>
+
+      {/* Conversion — website packages */}
+      <Section spacing="lg">
+        <Container>
+          <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
+            <Reveal>
+              <SectionHeading
+                eyebrow="Websites, made simple"
+                title="Need a Better Website? Let’s Build One."
+                intro="You’ve got a business to run — you shouldn’t have to become a developer to get a website that actually works for you. We build modern, customized sites with practical automation, straightforward pricing, and affordable ongoing support."
+              />
+              <div className="mt-6 flex flex-wrap gap-3">
+                <Button href="/get-started" variant="accent" size="lg">
+                  Get Started
+                </Button>
+                <Button href="/digital-solutions" variant="outline" size="lg">
+                  See what’s included
+                </Button>
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <div className="grid gap-4 sm:grid-cols-2">
+                {webPackages.map((p) => (
+                  <div
+                    key={p.id}
+                    className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]"
+                  >
+                    <p className="text-eyebrow text-accent-strong">{p.name}</p>
+                    <p className="mt-2 font-display text-4xl font-semibold text-ink">
+                      {p.priceDisplay}
+                    </p>
+                    <p className="mt-1 text-sm text-ink-muted">{p.tagline}</p>
+                    <ul className="mt-4 flex-1 space-y-1.5 text-sm text-ink-muted">
+                      {p.features.slice(0, 4).map((f) => (
+                        <li key={f} className="flex gap-2">
+                          <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-strong" /> {f}
+                        </li>
+                      ))}
+                    </ul>
+                    <Button href={`/get-started?package=${p.id}`} variant="primary" size="sm" className="mt-5 w-full">
+                      {p.cta}
+                    </Button>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* Conversion — property / real estate */}
+      <Section tone="navy" spacing="md">
+        <Container>
+          <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_auto]">
+            <div>
+              <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/10">
+                <Building className="h-6 w-6 text-accent" />
+              </span>
+              <h2 className="mt-5 text-3xl font-semibold text-on-dark sm:text-4xl">
+                Own Commercial Property or Lease Business Space?
+              </h2>
+              <p className="measure mt-4 text-[1.05rem] leading-relaxed text-on-dark-muted">
+                From reviewing occupancy costs to evaluating property performance and
+                opportunities, we bring real operating experience to complex real estate decisions.
+              </p>
+            </div>
+            <Button href="/contact?service=property" variant="accent" size="lg" className="w-full sm:w-auto">
+              Let’s Talk About Your Property
+            </Button>
+          </div>
         </Container>
       </Section>
 

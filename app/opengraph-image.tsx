@@ -15,18 +15,18 @@ export default function OgImage() {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: '80px',
-          background: '#14263d',
-          color: '#eaf1f8',
+          background: '#16212e',
+          color: '#f4f1ea',
           fontFamily: 'sans-serif',
         }}
       >
-        <div style={{ fontSize: 26, letterSpacing: 3, textTransform: 'uppercase', color: '#c29a4b' }}>
+        <div style={{ fontSize: 26, letterSpacing: 3, textTransform: 'uppercase', color: '#c0532a' }}>
           Business Advisory &amp; Digital Solutions
         </div>
         <div style={{ fontSize: 76, fontWeight: 800, marginTop: 24, lineHeight: 1.05, maxWidth: 1000 }}>
           Smarter Business. Stronger Decisions.
         </div>
-        <div style={{ fontSize: 30, marginTop: 28, color: '#abc0d8' }}>
+        <div style={{ fontSize: 30, marginTop: 28, color: '#a7b1bd' }}>
           Slingshot Advisory · Rochester, Minnesota
         </div>
       </div>

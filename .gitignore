@@ -8,8 +8,9 @@
 # production
 /build
 
-# local lead log (dev fallback storage) — never commit leads
+# local lead / order logs (dev fallback storage) — never commit customer data
 /.leads/
+/.orders/
 
 # misc
 .DS_Store

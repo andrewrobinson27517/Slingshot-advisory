@@ -64,6 +64,33 @@ Leads carry a status model (`New → Needs Information → Qualified → Proposa
 In Progress → Completed → Lost`) in the data you store; wire a private, authenticated admin
 view to manage them (see “Not yet built” below).
 
+## Website purchase & booking ("Build My Website")
+
+Visitors can buy a website package directly: **Starter $500** or **Business Website+ $750**
+(a $500 deposit, $250 balance at the final milestone). Flow:
+
+1. **`/get-started`** — pick a package, enter business info, agree to the project terms
+   (`/terms#website-projects`). `components/checkout/CheckoutFlow.tsx`.
+2. **`POST /api/orders`** — zod-validates, saves the order (dev `./.orders/orders.jsonl` and/or
+   `LEAD_WEBHOOK_URL`), emails the owner, and:
+   - **With Stripe configured** (`STRIPE_SECRET_KEY`) → creates a Checkout Session and returns the
+     URL; the client redirects to Stripe. `lib/stripe.ts` (REST, no SDK).
+   - **Without Stripe** → returns `payment_not_configured` and shows an honest "payment not
+     connected" state (order saved, owner notified) — **never a fake payment**.
+3. **`POST /api/stripe/webhook`** — verifies the signature (`STRIPE_WEBHOOK_SECRET`, HMAC) and,
+   on `checkout.session.completed`, marks the order **Paid** and sends onboarding emails. Payment
+   is confirmed **only** by the webhook — never by visiting the success URL.
+4. **`/get-started/success`** → **`/get-started/schedule`** — a 30–60 min strategy call. No live
+   calendar yet: it collects preferred times and emails the owner ("pending confirmation").
+
+Order statuses: `pending_payment → paid → discovery_scheduled → materials_received →
+in_development → review → launched` (or `cancelled`). See `lib/orders.ts`.
+
+**Stripe setup:** add `STRIPE_SECRET_KEY` + `STRIPE_WEBHOOK_SECRET`, and register a webhook
+endpoint at `{domain}/api/stripe/webhook` for `checkout.session.completed`. Serverless
+filesystems are ephemeral — for durable orders in production, point `LEAD_WEBHOOK_URL` at your
+store (or add a database) so the webhook can persist the Paid state.
+
 ## Website assistant
 
 A bottom-right launcher (`components/assistant/Assistant.tsx`) answers from the curated
@@ -79,7 +106,9 @@ key in the browser.
 | `NEXT_PUBLIC_SITE_URL` | Canonical/OG/sitemap base URL |
 | `RESEND_API_KEY` | Enables acknowledgment + notification emails |
 | `LEAD_FROM_EMAIL` / `LEAD_NOTIFY_EMAIL` | Verified sender / where leads go |
-| `LEAD_WEBHOOK_URL` | Optional: post each lead to your CRM/storage |
+| `LEAD_WEBHOOK_URL` | Optional: post each lead **and order** to your CRM/storage |
+| `STRIPE_SECRET_KEY` | Enables real Checkout for website packages |
+| `STRIPE_WEBHOOK_SECRET` | Required to verify payment and mark orders paid |
 | `ANTHROPIC_API_KEY` | Optional: LLM-backed assistant (server-side only) |
 
 ## Deploy
@@ -99,10 +128,17 @@ vars above in the host. The API route runs on the Node.js runtime.
 
 These were specified and are scaffolded for but intentionally not faked without credentials:
 
-- **Authenticated admin dashboard** for lead management (the lead schema + statuses exist).
-- **Private, access-controlled document uploads** (the form collects text and shows a
-  document checklist; uploads require object storage + signed URLs).
+- **Authenticated owner admin dashboard** for leads, orders, payment status, strategy calls,
+  and care subscriptions. The data model + statuses exist (`lib/orders.ts`); a real dashboard
+  needs durable storage (Supabase/Postgres) + authentication/server-side authorization — not
+  faked here. Until then, orders/leads are emailed to the owner and (in dev) logged to
+  `./.orders` / `./.leads`.
+- **Live calendar scheduling** (the strategy-call page collects preferred times today).
+- **Recurring billing** for care plans (opt-in subscriptions via Stripe Billing).
+- **Private, access-controlled document uploads** (object storage + signed URLs).
 - **LLM-backed assistant** (structured FAQ ships today).
+
+Brand usage is documented in **`BRAND_GUIDELINES.md`**.
 - **Automated tests** for intake validation/routing.
 
 ---

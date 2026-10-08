@@ -169,11 +169,11 @@ export const services: Service[] = [
     title: 'Website Development & AI Solutions',
     icon: MonitorSmartphone,
     cardSummary:
-      'Modern websites, customer intake systems, AI assistants, and business workflow automation.',
+      'Affordable, conversion-focused websites — Starter at $500 and Business Website+ at $750 — plus AI and automation by quote.',
     hero: {
       eyebrow: 'Website Development & AI Solutions',
-      headline: 'Modern Websites. Smarter Workflows. Better Business.',
-      sub: 'A website should do more than look good. It should help customers find information, submit inquiries, request appointments, and interact with your business efficiently — and the work behind the scenes should run itself where it can.',
+      headline: 'Need a Better Website? Let’s Build One.',
+      sub: 'You’ve got a business to run — you shouldn’t have to become a developer. We build modern, customized websites with practical automation, straightforward pricing, and affordable ongoing support.',
     },
     sections: [
       {
@@ -389,6 +389,7 @@ export const services: Service[] = [
     disclaimer:
       'Real estate underwriting is financial analysis and modeling to inform your decisions. It is not an appraisal, a guaranteed valuation, or an investment recommendation, and it should not be relied upon as the sole basis for an investment decision.',
     primaryCta: { label: 'Request an Investment Analysis', service: 'underwriting' },
+    secondaryCta: { label: 'Discuss My Property', service: 'property' },
     seo: {
       title: 'Real Estate Underwriting & Cash-Flow Modeling — Rochester MN',
       description:

@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter, Manrope } from 'next/font/google';
+import { GeistSans } from 'geist/font/sans';
+import { GeistMono } from 'geist/font/mono';
+import { Fraunces } from 'next/font/google';
 import { SiteHeader } from '@/components/layout/SiteHeader';
 import { SiteFooter } from '@/components/layout/SiteFooter';
 import { Assistant } from '@/components/assistant/Assistant';
@@ -8,8 +10,12 @@ import { organizationSchema, websiteSchema } from '@/lib/schema';
 import { site } from '@/data/site';
 import '@/styles/globals.css';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter', display: 'swap' });
-const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope', display: 'swap' });
+const fraunces = Fraunces({
+  subsets: ['latin'],
+  variable: '--font-fraunces',
+  display: 'swap',
+  style: ['normal', 'italic'],
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -47,14 +53,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: '#14263d',
+  themeColor: '#16212e',
   width: 'device-width',
   initialScale: 1,
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${inter.variable} ${manrope.variable}`}>
+    <html
+      lang="en"
+      className={`${GeistSans.variable} ${GeistMono.variable} ${fraunces.variable}`}
+    >
       <body className="flex min-h-screen flex-col">
         <SchemaScript schema={[organizationSchema(), websiteSchema()]} />
         <a href="#main" className="skip-link">
