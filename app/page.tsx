@@ -1,257 +1,350 @@
+import Image from 'next/image';
 import Link from 'next/link';
-import { ArrowUpRight, Compass, Layers, Target, MessageCircle, FileText, Rocket } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Check, Building } from 'lucide-react';
 import { Hero } from '@/components/home/Hero';
-import { ServiceCards } from '@/components/home/ServiceCards';
 import { Container } from '@/components/layout/Container';
 import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTASection } from '@/components/shared/CTASection';
-import { Check, Building } from 'lucide-react';
 import { Reveal } from '@/components/ui/Reveal';
 import { Button } from '@/components/ui/Button';
-import { work } from '@/data/work';
+import { Badge } from '@/components/ui/Badge';
+import { founder } from '@/data/founder';
+import { caseStudies } from '@/data/caseStudies';
+import { divisions } from '@/data/services';
 import { webPackages } from '@/data/packages';
+import { work } from '@/data/work';
 
-const principles = [
-  {
-    icon: Compass,
-    title: 'Operator-Led Perspective',
-    text: 'Recommendations shaped by firsthand business ownership and operations — not theory from the sidelines.',
-  },
-  {
-    icon: Layers,
-    title: 'Financial & Technical Expertise',
-    text: 'We connect financial analysis, practical workflows, and modern technology into solutions you can actually use.',
-  },
-  {
-    icon: Target,
-    title: 'Focused, Actionable Deliverables',
-    text: 'Clear scopes, practical recommendations, and results you can put to work — no open-ended engagements.',
-  },
+const websiteFeatures = [
+  'Customer inquiry forms',
+  'Booking & availability requests',
+  'Automated email responses',
+  'Office or property availability',
+  'Lead qualification',
+  'AI-assisted visitor support',
+  'CRM integrations',
+  'Customer follow-up workflows',
 ];
 
-const steps = [
-  { icon: MessageCircle, title: 'Tell Us About Your Challenge', text: 'Share what you’re trying to solve through a short consultation request.' },
-  { icon: FileText, title: 'Receive a Clear Project Scope', text: 'We define the work, deliverables, and a fixed-price package before anything starts.' },
-  { icon: Rocket, title: 'Get Practical Solutions', text: 'We deliver the analysis, build, or improvements — and the next steps to act on them.' },
+const realEstateHelp = [
+  'Lease cost analysis',
+  'CAM reconciliation reviews',
+  'Renewal financial modeling',
+  'Real estate underwriting',
+  'Property positioning',
+  'Leasing & marketing strategy',
+  'Operating expense reviews',
+  'NOI analysis',
+  'Asset management',
 ];
 
 export default function HomePage() {
-  const featured = work.find((w) => w.slug === 'seven-medicine');
+  const projects = ['seven-medicine', 'ironwood-square', 'slingshot-real-estate']
+    .map((s) => work.find((w) => w.slug === s))
+    .filter(Boolean);
 
   return (
     <>
       <Hero />
 
-      {/* Trust */}
-      <Section spacing="md">
-        <Container>
+      {/* 2 — Why Slingshot Advisory exists (founder) */}
+      <Section spacing="lg">
+        <Container className="grid items-start gap-12 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal>
+            <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)]">
+              <Image
+                src={founder.photo.src}
+                alt={founder.photo.alt}
+                width={founder.photo.width}
+                height={founder.photo.height}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="aspect-[4/5] w-full object-cover"
+              />
+            </div>
+            <div className="mt-4">
+              <p className="text-lg font-semibold text-ink">{founder.name}</p>
+              <p className="text-[0.95rem] text-ink-muted">{founder.title}</p>
+              <p className="text-[0.9rem] text-ink-faint">{founder.also}</p>
+            </div>
+          </Reveal>
+          <Reveal delay={0.1}>
             <SectionHeading
-              align="center"
-              eyebrow="Why Slingshot"
-              title="Real-World Experience. Practical Solutions."
-              intro="Slingshot Advisory draws on firsthand experience owning, financing, operating, and improving real businesses and commercial real estate. We don’t hand you theory — we help you execute, because we’ve had to execute ourselves."
+              eyebrow="Why we started"
+              title="We Built It for Ourselves. Now We’re Helping Others."
             />
+            <div className="measure mt-5 space-y-4 text-[1.05rem] leading-relaxed text-ink-muted">
+              {founder.story.slice(0, 3).map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
+            <blockquote className="mt-6 border-l-2 border-accent pl-5 font-display text-xl italic leading-relaxed text-ink">
+              “{founder.quote.body}”
+            </blockquote>
+            <Button href="/about" variant="outline" className="mt-6">
+              Read the full story <ArrowRight className="h-4 w-4" />
+            </Button>
           </Reveal>
         </Container>
       </Section>
 
-      {/* Services */}
+      {/* 3 — Three ways we help */}
       <Section id="services" tone="muted" spacing="lg">
         <Container>
           <SectionHeading
-            eyebrow="What we do"
-            title="Four ways we help business owners"
-            intro="Defined, practical services with fixed-price packages — pick the one that fits the decision in front of you."
+            eyebrow="How we help"
+            title="Three Ways We Help"
+            intro="Practical, fairly priced help in the areas we know firsthand — because we’ve done the work ourselves."
             className="mb-10"
           />
-          <ServiceCards />
+          <div className="grid gap-5 lg:grid-cols-3">
+            {divisions.map((d, i) => (
+              <Reveal key={d.key} delay={i * 0.06}>
+                <Link
+                  href={d.route}
+                  className="group flex h-full flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)] transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[var(--shadow-card-hover)]"
+                >
+                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy text-on-dark">
+                    <d.icon className="h-6 w-6 text-accent" />
+                  </span>
+                  <h3 className="mt-5 text-xl font-semibold text-ink">{d.title}</h3>
+                  <p className="mt-2 flex-1 text-[0.98rem] leading-relaxed text-ink-muted">{d.summary}</p>
+                  <span className="mt-4 inline-flex items-center gap-1.5 text-[0.95rem] font-semibold text-accent-strong">
+                    Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </Container>
       </Section>
 
-      {/* Conversion — website packages */}
+      {/* 4 — Real results (case studies) */}
       <Section spacing="lg">
         <Container>
-          <div className="grid items-start gap-10 lg:grid-cols-[1fr_1.1fr]">
+          <SectionHeading
+            eyebrow="Real results"
+            title="The Experience Behind the Advice."
+            intro="These are real Slingshot-owned properties we’ve repositioned and operated ourselves. The advice we give others comes from doing this work with our own money on the line."
+            className="mb-10"
+          />
+          <div className="grid gap-6 lg:grid-cols-2">
+            {caseStudies.map((c, i) => (
+              <Reveal key={c.slug} delay={(i % 2) * 0.06}>
+                <article className="flex h-full flex-col overflow-hidden rounded-2xl border border-border bg-surface shadow-[var(--shadow-card)]">
+                  <div className="relative">
+                    <Image
+                      src={c.image.src}
+                      alt={c.image.alt}
+                      width={1200}
+                      height={800}
+                      sizes="(min-width: 1024px) 50vw, 100vw"
+                      className="aspect-[16/9] w-full object-cover"
+                    />
+                    {c.metric ? (
+                      <div className="absolute bottom-3 left-3 rounded-lg bg-navy/85 px-3 py-2 backdrop-blur-sm">
+                        <p className="font-display text-2xl font-semibold leading-none text-on-dark">
+                          {c.metric.value}
+                        </p>
+                        <p className="text-xs text-on-dark-muted">{c.metric.label}</p>
+                      </div>
+                    ) : null}
+                  </div>
+                  <div className="flex flex-1 flex-col p-6">
+                    <div className="flex items-center gap-2">
+                      <Badge tone="accent">{c.category}</Badge>
+                    </div>
+                    <h3 className="mt-3 text-xl font-semibold text-ink">{c.name}</h3>
+                    <dl className="mt-3 space-y-2 text-[0.95rem] text-ink-muted">
+                      <div>
+                        <dt className="font-semibold text-ink">Challenge</dt>
+                        <dd>{c.challenge}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold text-ink">What we did</dt>
+                        <dd>{c.action}</dd>
+                      </div>
+                      <div>
+                        <dt className="font-semibold text-ink">Result</dt>
+                        <dd>{c.result}</dd>
+                      </div>
+                    </dl>
+                    <p className="mt-auto border-t border-border pt-3 text-[0.9rem] italic text-ink-faint">
+                      {c.lesson}
+                    </p>
+                  </div>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <p className="mt-6 measure text-sm text-ink-faint">
+            Figures shown are owner-reported and approximate, and reflect multiple contributing
+            factors. They’re examples of the work, not guarantees of future results.
+          </p>
+        </Container>
+      </Section>
+
+      {/* 5 — Websites that work */}
+      <Section tone="muted" spacing="lg">
+        <Container>
+          <div className="grid items-start gap-10 lg:grid-cols-2">
             <Reveal>
               <SectionHeading
-                eyebrow="Websites, made simple"
-                title="Need a Better Website? Let’s Build One."
-                intro="You’ve got a business to run — you shouldn’t have to become a developer to get a website that actually works for you. We build modern, customized sites with practical automation, straightforward pricing, and affordable ongoing support."
+                eyebrow="Websites that work"
+                title="Your Website Should Be Working for Your Business."
+                intro="There’s a big difference between an online brochure and a website that actually brings in customers. We build the second kind — with the practical features that turn visitors into inquiries."
               />
-              <div className="mt-6 flex flex-wrap gap-3">
-                <Button href="/get-started" variant="accent" size="lg">
-                  Get Started
-                </Button>
-                <Button href="/digital-solutions" variant="outline" size="lg">
-                  See what’s included
-                </Button>
+              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                {websiteFeatures.map((f) => (
+                  <li key={f} className="flex gap-2.5 text-[0.95rem] text-ink-muted">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-strong" /> {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Button href="/get-started" variant="accent">Build My Website</Button>
+                <Button href="/digital-solutions" variant="outline">See pricing & details</Button>
               </div>
             </Reveal>
             <Reveal delay={0.1}>
-              <div className="grid gap-4 sm:grid-cols-2">
-                {webPackages.map((p) => (
-                  <div
-                    key={p.id}
-                    className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]"
-                  >
-                    <p className="text-eyebrow text-accent-strong">{p.name}</p>
-                    <p className="mt-2 font-display text-4xl font-semibold text-ink">
-                      {p.priceDisplay}
-                    </p>
-                    <p className="mt-1 text-sm text-ink-muted">{p.tagline}</p>
-                    <ul className="mt-4 flex-1 space-y-1.5 text-sm text-ink-muted">
-                      {p.features.slice(0, 4).map((f) => (
-                        <li key={f} className="flex gap-2">
-                          <Check className="mt-0.5 h-3.5 w-3.5 shrink-0 text-accent-strong" /> {f}
-                        </li>
-                      ))}
-                    </ul>
-                    <Button href={`/get-started?package=${p.id}`} variant="primary" size="sm" className="mt-5 w-full">
-                      {p.cta}
-                    </Button>
-                  </div>
-                ))}
+              <div className="space-y-3">
+                {projects.map((p) =>
+                  p ? (
+                    <a
+                      key={p.slug}
+                      href={p.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="group flex items-center justify-between gap-4 rounded-xl border border-border bg-surface p-5 shadow-[var(--shadow-card)] transition-all hover:-translate-y-0.5 hover:border-accent/40"
+                    >
+                      <div className="min-w-0">
+                        <p className="font-semibold text-ink">{p.name}</p>
+                        <p className="truncate text-[0.95rem] text-ink-muted">{p.summary}</p>
+                      </div>
+                      <ArrowUpRight className="h-5 w-5 shrink-0 text-ink-faint transition-colors group-hover:text-accent" />
+                    </a>
+                  ) : null,
+                )}
+                <p className="text-xs text-ink-faint">Live sites we’ve designed and built. Visit them to see the work.</p>
               </div>
             </Reveal>
           </div>
         </Container>
       </Section>
 
-      {/* Conversion — property / real estate */}
+      {/* 6 — Transparent pricing */}
+      <Section spacing="lg">
+        <Container>
+          <SectionHeading
+            align="center"
+            eyebrow="Transparent pricing"
+            title="Affordable, up-front website pricing"
+            intro="No inflated agency quotes. Pick a package and get started — or ask about something more custom."
+            className="mb-10"
+          />
+          <div className="grid gap-5 lg:grid-cols-4">
+            {webPackages.map((p) => (
+              <div key={p.id} className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
+                <p className="text-eyebrow text-accent-strong">{p.name}</p>
+                <p className="mt-2 font-display text-4xl font-semibold text-ink">{p.priceDisplay}</p>
+                <p className="mt-1 flex-1 text-sm text-ink-muted">{p.tagline}</p>
+                <Button href={`/get-started?package=${p.id}`} variant="primary" size="sm" className="mt-5 w-full">
+                  {p.cta}
+                </Button>
+              </div>
+            ))}
+            <div className="flex flex-col rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
+              <p className="text-eyebrow text-accent-strong">Custom Digital Solutions</p>
+              <p className="mt-2 font-display text-4xl font-semibold text-ink">Quoted</p>
+              <p className="mt-1 flex-1 text-sm text-ink-muted">AI, booking systems, integrations, and automation.</p>
+              <Button href="/contact?service=ai-automation" variant="outline" size="sm" className="mt-5 w-full">
+                Get a Quote
+              </Button>
+            </div>
+          </div>
+          <p className="mt-6 text-center text-sm text-ink-faint">
+            Optional website care from $25–$40/month (routine maintenance within limits; hosting,
+            domain, API, and token costs billed separately).
+          </p>
+        </Container>
+      </Section>
+
+      {/* 7 — Commercial real estate */}
+      <Section tone="muted" spacing="lg">
+        <Container>
+          <div className="grid items-center gap-10 lg:grid-cols-2">
+            <Reveal>
+              <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)]">
+                <Image
+                  src="/photos/rochester-exec-suites.jpg"
+                  alt="Rochester Executive Suites — a Slingshot-owned office property"
+                  width={1200}
+                  height={800}
+                  sizes="(min-width: 1024px) 50vw, 100vw"
+                  className="aspect-[4/3] w-full object-cover"
+                />
+              </div>
+            </Reveal>
+            <Reveal delay={0.1}>
+              <SectionHeading
+                eyebrow="Commercial real estate"
+                title="Better Spaces. Better Operations. Stronger Performance."
+                intro="We’ve sat on both sides of the table — as a landlord and as a tenant. That perspective helps owners and tenants make clearer, better-informed decisions."
+              />
+              <ul className="mt-6 grid gap-2.5 sm:grid-cols-2">
+                {realEstateHelp.map((f) => (
+                  <li key={f} className="flex gap-2.5 text-[0.95rem] text-ink-muted">
+                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-strong" /> {f}
+                  </li>
+                ))}
+              </ul>
+              <div className="mt-7 flex flex-wrap gap-3">
+                <Button href="/contact?service=property" variant="accent">Discuss My Property</Button>
+                <Button href="/tenant-advisory" variant="outline">Tenant advisory</Button>
+              </div>
+            </Reveal>
+          </div>
+        </Container>
+      </Section>
+
+      {/* 8 — Local commitment */}
       <Section tone="navy" spacing="md">
         <Container>
-          <div className="grid items-center gap-8 lg:grid-cols-[1.3fr_auto]">
+          <div className="grid items-center gap-10 lg:grid-cols-[1.1fr_0.9fr]">
             <div>
               <span className="grid h-12 w-12 place-items-center rounded-xl bg-white/10">
                 <Building className="h-6 w-6 text-accent" />
               </span>
               <h2 className="mt-5 text-3xl font-semibold text-on-dark sm:text-4xl">
-                Own Commercial Property or Lease Business Space?
+                Rooted in Rochester. Focused on Your Business.
               </h2>
               <p className="measure mt-4 text-[1.05rem] leading-relaxed text-on-dark-muted">
-                From reviewing occupancy costs to evaluating property performance and
-                opportunities, we bring real operating experience to complex real estate decisions.
+                We live, work, and invest here. Our clients are local businesses, tenants,
+                landlords, entrepreneurs, and property owners — people we see around town. Helping
+                Rochester businesses grow, one business at a time, isn’t a slogan; it’s the plan.
               </p>
             </div>
-            <Button href="/contact?service=property" variant="accent" size="lg" className="w-full sm:w-auto">
-              Let’s Talk About Your Property
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      {/* Why / principles */}
-      <Section spacing="lg">
-        <Container>
-          <SectionHeading align="center" eyebrow="Our difference" title="Why Slingshot?" className="mb-12" />
-          <div className="grid gap-6 lg:grid-cols-3">
-            {principles.map((p, i) => (
-              <Reveal key={p.title} delay={i * 0.06}>
-                <div className="h-full rounded-2xl border border-border bg-surface p-7 shadow-[var(--shadow-card)]">
-                  <span className="grid h-12 w-12 place-items-center rounded-xl bg-navy text-on-dark">
-                    <p.icon className="h-6 w-6 text-accent" />
-                  </span>
-                  <h3 className="mt-5 text-xl font-bold text-ink">{p.title}</h3>
-                  <p className="mt-2 leading-relaxed text-ink-muted">{p.text}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </Container>
-      </Section>
-
-      {/* Featured work */}
-      {featured ? (
-        <Section tone="muted" spacing="lg">
-          <Container>
-            <div className="grid items-center gap-10 lg:grid-cols-2">
-              <Reveal>
-                <SectionHeading
-                  eyebrow="Featured work"
-                  title="Websites that do real work"
-                  intro={
-                    <>
-                      We designed and built the {featured.name} clinic website — clean,
-                      responsive, and focused on helping new patients find information and get
-                      in touch.
-                    </>
-                  }
-                />
-                <ul className="mt-6 space-y-2.5 text-[0.98rem] text-ink-muted">
-                  {featured.features.map((f) => (
-                    <li key={f} className="flex gap-2.5">
-                      <span className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
-                      {f}
-                    </li>
-                  ))}
-                </ul>
-                <div className="mt-7 flex flex-wrap gap-3">
-                  <Button href="/our-work">See Our Work</Button>
-                  {featured.url ? (
-                    <Button href={featured.url} variant="outline">
-                      Visit the live site <ArrowUpRight className="h-4 w-4" />
-                    </Button>
-                  ) : null}
-                </div>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <div className="rounded-2xl border border-border bg-surface p-8 shadow-[var(--shadow-card)]">
-                  <div className="flex items-center gap-1.5">
-                    <span className="h-3 w-3 rounded-full bg-border" />
-                    <span className="h-3 w-3 rounded-full bg-border" />
-                    <span className="h-3 w-3 rounded-full bg-border" />
-                  </div>
-                  <div className="mt-5 space-y-3">
-                    <div className="h-8 w-2/3 rounded-md bg-navy/90" />
-                    <div className="h-3 w-full rounded bg-surface-muted" />
-                    <div className="h-3 w-5/6 rounded bg-surface-muted" />
-                    <div className="mt-5 grid grid-cols-3 gap-3">
-                      {[0, 1, 2].map((n) => (
-                        <div key={n} className="rounded-lg border border-border p-3">
-                          <div className="h-6 w-6 rounded bg-accent-soft" />
-                          <div className="mt-2 h-2 w-full rounded bg-surface-muted" />
-                          <div className="mt-1 h-2 w-2/3 rounded bg-surface-muted" />
-                        </div>
-                      ))}
-                    </div>
-                    <div className="mt-4 h-9 w-40 rounded-lg bg-accent" />
-                  </div>
-                </div>
-              </Reveal>
+            <div className="overflow-hidden rounded-2xl border border-white/10 shadow-[var(--shadow-hero)]">
+              <Image
+                src="/photos/rochester-local.jpg"
+                alt="Downtown Rochester, Minnesota"
+                width={1200}
+                height={800}
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="aspect-[4/3] w-full object-cover"
+              />
             </div>
-          </Container>
-        </Section>
-      ) : null}
-
-      {/* How it works */}
-      <Section spacing="lg">
-        <Container>
-          <SectionHeading align="center" eyebrow="How it works" title="A simple, defined process" className="mb-12" />
-          <div className="grid gap-6 lg:grid-cols-3">
-            {steps.map((s, i) => (
-              <Reveal key={s.title} delay={i * 0.06}>
-                <div className="relative h-full rounded-2xl border border-border bg-surface p-7 shadow-[var(--shadow-card)]">
-                  <span className="text-eyebrow text-ink-faint">Step {i + 1}</span>
-                  <span className="mt-3 grid h-12 w-12 place-items-center rounded-xl bg-accent-soft text-accent-strong">
-                    <s.icon className="h-6 w-6" />
-                  </span>
-                  <h3 className="mt-5 text-lg font-bold text-ink">{s.title}</h3>
-                  <p className="mt-2 text-ink-muted">{s.text}</p>
-                </div>
-              </Reveal>
-            ))}
           </div>
-          <p className="mt-8 text-center">
-            <Link href="/contact" className="font-semibold text-accent-strong hover:underline">
-              Start a conversation →
-            </Link>
-          </p>
         </Container>
       </Section>
 
-      <CTASection />
+      {/* 9 — Friendly CTA */}
+      <CTASection
+        eyebrow="Let’s talk"
+        title="Have Something You’re Trying to Figure Out?"
+        intro="Whether it’s a website, a complicated lease, or a property that isn’t performing the way you’d hoped, we’re happy to have a conversation. If we can help, we’ll explain how. If there’s a better solution, we’ll point you in the right direction."
+        cta={{ label: 'Build My Website', href: '/get-started' }}
+        secondary={{ label: 'Discuss a Challenge', href: '/contact' }}
+      />
     </>
   );
 }

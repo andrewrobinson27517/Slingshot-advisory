@@ -16,12 +16,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     }),
   );
 
-  const servicePages = services.map((s) => ({
-    url: `${base}${s.route}`,
-    lastModified: now,
-    changeFrequency: 'monthly' as const,
-    priority: 0.9,
-  }));
+  const servicePages = [...services.map((s) => s.route), '/asset-management', '/get-started'].map(
+    (route) => ({
+      url: `${base}${route}`,
+      lastModified: now,
+      changeFrequency: 'monthly' as const,
+      priority: 0.9,
+    }),
+  );
 
   const articlePages = articles.map((a) => ({
     url: `${base}/resources/${a.slug}`,

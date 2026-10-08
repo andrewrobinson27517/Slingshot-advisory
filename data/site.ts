@@ -40,8 +40,9 @@ export const footerNav = [
   {
     heading: 'Services',
     links: [
-      { label: 'Commercial Tenant Advisory', href: '/tenant-advisory' },
-      { label: 'Websites & AI Solutions', href: '/digital-solutions' },
+      { label: 'Digital Development & Automation', href: '/digital-solutions' },
+      { label: 'Commercial Real Estate & Tenant Advisory', href: '/tenant-advisory' },
+      { label: 'Asset Management & Repositioning', href: '/asset-management' },
       { label: 'Real Estate Underwriting', href: '/investment-analysis' },
       { label: 'Business & Capital Advisory', href: '/business-advisory' },
     ],
@@ -49,10 +50,11 @@ export const footerNav = [
   {
     heading: 'Company',
     links: [
-      { label: 'About Slingshot', href: '/about' },
+      { label: 'About & Founder', href: '/about' },
       { label: 'Our Work', href: '/our-work' },
       { label: 'Resources & Insights', href: '/resources' },
-      { label: 'Request a Consultation', href: '/contact' },
+      { label: 'Build My Website', href: '/get-started' },
+      { label: 'Contact', href: '/contact' },
     ],
   },
   {

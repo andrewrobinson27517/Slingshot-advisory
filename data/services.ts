@@ -1,6 +1,56 @@
-import { Building2, MonitorSmartphone, LineChart, Briefcase } from 'lucide-react';
+import { Building2, MonitorSmartphone, LineChart, Briefcase, TrendingUp } from 'lucide-react';
 import type { LucideIcon } from 'lucide-react';
 import type { ServiceKey } from '@/lib/validation';
+
+/**
+ * The three primary ways Slingshot Advisory helps (homepage + nav). Underwriting
+ * and business advisory remain available as supporting services (see navServices).
+ */
+export const divisions = [
+  {
+    key: 'digital',
+    title: 'Digital Development & Automation',
+    route: '/digital-solutions',
+    icon: MonitorSmartphone,
+    summary:
+      'Websites designed to convert customers — supported by practical automation and affordable maintenance.',
+  },
+  {
+    key: 'realestate',
+    title: 'Commercial Real Estate & Tenant Advisory',
+    route: '/tenant-advisory',
+    icon: Building2,
+    summary:
+      'CAM expense reviews, lease-renewal analysis, occupancy-cost planning, and financial analysis.',
+  },
+  {
+    key: 'asset',
+    title: 'Asset Management & Repositioning',
+    route: '/asset-management',
+    icon: TrendingUp,
+    summary:
+      'Evaluate underperforming real estate, improve occupancy, strengthen operations, and rethink how assets function.',
+  },
+] as const;
+
+/** Full service menu for the nav dropdown: the three divisions + supporting services. */
+export const navServices = [
+  ...divisions,
+  {
+    key: 'underwriting',
+    title: 'Real Estate Underwriting',
+    route: '/investment-analysis',
+    icon: LineChart,
+    summary: 'NOI, cap rate, DSCR, cash-flow modeling, and valuation scenarios.',
+  },
+  {
+    key: 'business',
+    title: 'Business & Capital Advisory',
+    route: '/business-advisory',
+    icon: Briefcase,
+    summary: 'Cash-flow planning, lender readiness, and operations improvement.',
+  },
+] as const;
 
 export type Pkg = {
   name: string;

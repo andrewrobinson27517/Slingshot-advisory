@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { primaryNav } from '@/data/site';
-import { services } from '@/data/services';
+import { navServices } from '@/data/services';
 import { cn } from '@/lib/cn';
 import { Logo } from './Logo';
 import { Button } from '@/components/ui/Button';
@@ -55,21 +55,21 @@ export function SiteHeader() {
               <ChevronDown className={cn('h-4 w-4 transition-transform', servicesOpen && 'rotate-180')} />
             </button>
             {servicesOpen ? (
-              <div className="absolute left-0 top-full w-80 pt-2">
+              <div className="absolute left-0 top-full w-[22rem] pt-2">
                 <div className="overflow-hidden rounded-xl border border-border bg-surface p-2 shadow-[var(--shadow-card-hover)]">
-                  {services.map((s) => (
+                  {navServices.map((n) => (
                     <Link
-                      key={s.slug}
-                      href={s.route}
+                      key={n.key}
+                      href={n.route}
                       className="flex items-start gap-3 rounded-lg px-3 py-2.5 transition-colors hover:bg-surface-muted"
                     >
                       <span className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-md bg-accent-soft text-accent-strong">
-                        <s.icon className="h-4 w-4" />
+                        <n.icon className="h-4 w-4" />
                       </span>
                       <span className="min-w-0">
-                        <span className="block text-sm font-semibold text-ink">{s.nav}</span>
+                        <span className="block text-sm font-semibold text-ink">{n.title}</span>
                         <span className="mt-0.5 block text-xs leading-snug text-ink-muted">
-                          {s.cardSummary}
+                          {n.summary}
                         </span>
                       </span>
                     </Link>
@@ -119,14 +119,14 @@ export function SiteHeader() {
         <div className="border-t border-border bg-surface lg:hidden">
           <nav className="mx-auto flex w-full max-w-7xl flex-col px-5 py-3 sm:px-6" aria-label="Mobile">
             <p className="px-3 pb-1 pt-2 text-eyebrow text-ink-faint">Services</p>
-            {services.map((s) => (
+            {navServices.map((n) => (
               <Link
-                key={s.slug}
-                href={s.route}
+                key={n.key}
+                href={n.route}
                 className="flex items-center gap-3 rounded-lg px-3 py-3 text-ink hover:bg-surface-muted"
               >
-                <s.icon className="h-5 w-5 text-accent-strong" />
-                <span className="text-[1.02rem] font-medium">{s.nav}</span>
+                <n.icon className="h-5 w-5 text-accent-strong" />
+                <span className="text-[1.02rem] font-medium">{n.title}</span>
               </Link>
             ))}
             <div className="my-2 border-t border-border" />

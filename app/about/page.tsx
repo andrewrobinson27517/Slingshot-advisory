@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import { Check } from 'lucide-react';
 import { PageHeader } from '@/components/shared/PageHeader';
 import { Container } from '@/components/layout/Container';
@@ -6,88 +7,106 @@ import { Section } from '@/components/layout/Section';
 import { SectionHeading } from '@/components/shared/SectionHeading';
 import { CTASection } from '@/components/shared/CTASection';
 import { Reveal } from '@/components/ui/Reveal';
+import { founder } from '@/data/founder';
 import { site } from '@/data/site';
 
 export const metadata: Metadata = {
-  title: 'About Slingshot Advisory',
+  title: 'About & Founder — Andrew Robinson',
   description:
-    'Slingshot Advisory is an owner-operated business consulting and digital solutions firm in Rochester, MN — an extension of the operating experience built through Slingshot Real Estate.',
+    'Slingshot Advisory is owner-operated by Andrew Robinson, a Rochester entrepreneur and commercial real estate owner. The story of why he started it — and the experience behind the advice.',
   alternates: { canonical: '/about' },
 };
-
-const experience = [
-  'Commercial real estate acquisition and management',
-  'Business operations and financial analysis',
-  'Commercial office leasing and occupancy-cost management',
-  'Commercial real estate underwriting',
-  'Financial modeling and lender-package preparation',
-  'Website development and AI-powered business tools',
-  'Business process automation and workflow optimization',
-];
 
 export default function AboutPage() {
   return (
     <>
       <PageHeader
-        eyebrow="About Slingshot"
-        title="Built by operators. Designed for business owners."
-        intro="Slingshot Advisory is an extension of the expertise developed through Slingshot Real Estate and its related businesses — real operating experience, put to work for other business owners."
+        eyebrow="About & founder"
+        title="Why I Started Slingshot Advisory"
+        intro="Slingshot Advisory isn’t a faceless consulting company. It’s owner-operated by one Rochester entrepreneur — built from the experience of actually doing this work."
       />
 
+      {/* Founder */}
       <Section spacing="lg">
-        <Container className="grid gap-12 lg:grid-cols-[1.3fr_1fr]">
+        <Container className="grid items-start gap-12 lg:grid-cols-[0.85fr_1.15fr]">
           <Reveal>
-            <div className="measure space-y-5 text-[1.05rem] leading-relaxed text-ink-muted">
-              <p>
-                Most consulting advice comes from people who have read about running a business.
-                Ours comes from doing it. We’ve acquired and managed commercial real estate,
-                controlled operating expenses, prepared lender packages, built websites and
-                automation, and made the financial decisions that come with owning and operating
-                real companies.
-              </p>
-              <p>
-                That’s the difference. We don’t simply hand businesses theoretical
-                recommendations. We understand what it takes to operate, control expenses,
-                implement systems, and make financial decisions — because we’ve had to.
-              </p>
-              <p>
-                Slingshot Advisory is deliberately boutique and owner-operated. We take on
-                defined, practical work with clear scopes and fixed-price packages, so you know
-                exactly what you’re getting and what it costs.
-              </p>
+            <div className="overflow-hidden rounded-2xl border border-border shadow-[var(--shadow-card)]">
+              <Image
+                src={founder.photo.src}
+                alt={founder.photo.alt}
+                width={founder.photo.width}
+                height={founder.photo.height}
+                priority
+                sizes="(min-width: 1024px) 40vw, 100vw"
+                className="aspect-[4/5] w-full object-cover"
+              />
+            </div>
+            <div className="mt-5 rounded-2xl border border-border bg-surface-muted p-5">
+              <p className="text-lg font-semibold text-ink">{founder.name}</p>
+              <p className="text-[0.95rem] text-ink-muted">{founder.title}</p>
+              <p className="text-[0.95rem] text-ink-muted">{founder.also}</p>
+              <p className="mt-2 text-[0.9rem] text-ink-faint">{founder.location}</p>
             </div>
           </Reveal>
+
           <Reveal delay={0.1}>
-            <div className="rounded-2xl border border-border bg-surface-muted p-6">
-              <h2 className="font-bold text-ink">Our experience</h2>
-              <ul className="mt-4 space-y-2.5 text-[0.98rem] text-ink-muted">
-                {experience.map((e) => (
-                  <li key={e} className="flex gap-2.5">
-                    <Check className="mt-0.5 h-4 w-4 shrink-0 text-accent-strong" />
-                    {e}
-                  </li>
-                ))}
-              </ul>
+            <div className="measure space-y-4 text-[1.08rem] leading-relaxed text-ink-muted">
+              {founder.story.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
             </div>
+            <blockquote className="mt-7 border-l-2 border-accent pl-5 font-display text-xl italic leading-relaxed text-ink">
+              “{founder.quote.body}”
+              <footer className="mt-2 font-sans text-sm font-semibold not-italic text-ink-muted">
+                — {founder.quote.attribution}
+              </footer>
+            </blockquote>
           </Reveal>
         </Container>
       </Section>
 
-      <Section tone="muted" spacing="md">
+      {/* The progression */}
+      <Section tone="muted" spacing="lg">
+        <Container>
+          <SectionHeading
+            eyebrow="How we got here"
+            title="The path that led to Slingshot Advisory"
+            intro="Each step taught a skill other business owners now benefit from."
+            className="mb-10"
+          />
+          <ol className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {founder.progression.map((step, i) => (
+              <Reveal key={step} delay={(i % 3) * 0.05}>
+                <li className="flex h-full gap-4 rounded-2xl border border-border bg-surface p-6 shadow-[var(--shadow-card)]">
+                  <span className="grid h-9 w-9 shrink-0 place-items-center rounded-full bg-accent text-sm font-semibold text-white">
+                    {i + 1}
+                  </span>
+                  <p className="text-[0.98rem] text-ink">{step}</p>
+                </li>
+              </Reveal>
+            ))}
+          </ol>
+        </Container>
+      </Section>
+
+      {/* Philosophy */}
+      <Section spacing="md">
         <Container>
           <SectionHeading
             align="center"
-            eyebrow="How we work"
-            title="Practical, transparent, and focused"
-            intro="We position our work clearly: Slingshot Advisory provides analysis, preparation, and digital solutions. We are not a licensed brokerage, law firm, CPA firm, mortgage originator, or registered investment adviser, and we point you to the right licensed professional when that’s what a situation calls for."
+            eyebrow="Our philosophy"
+            title="Helping Rochester businesses grow, one business at a time."
+            intro="We’re not trying to sell anyone services they don’t need. The goal is to help you make better decisions, reduce unnecessary overhead, and find solutions that actually work. If we’re not the right fit, we’ll tell you — and point you somewhere better."
             className="mx-auto"
           />
         </Container>
       </Section>
 
       <CTASection
-        title="Let’s put that experience to work."
-        intro={`Based in ${site.contact.location}, serving Rochester and Southeast Minnesota — and remote clients nationwide where permitted.`}
+        title="Want to talk it through?"
+        intro={`Based in ${site.contact.location}. If you’ve got a website, a lease, or a property you’re trying to figure out, let’s have a conversation.`}
+        cta={{ label: 'Start a Conversation', href: '/contact' }}
+        secondary={{ label: 'Build My Website', href: '/get-started' }}
       />
     </>
   );
